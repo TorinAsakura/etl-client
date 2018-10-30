@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  yarn:
+    image: node:alpine
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    entrypoint: yarn
+
+  swt:
+    image: node:alpine
+    working_dir: /workspace/packages/swt
+    volumes:
+      - ./:/workspace
+    entrypoint: yarn run dev
+    environment:
+      - PORT=8010
+      - VIRTUAL_HOST=etelaranta.localhost
+    ports:
+      - 8010:8010
+
+  ui:
+    image: node:alpine
+    working_dir: /workspace/packages/ui
+    volumes:
+    - ./:/workspace
+    entrypoint: yarn docs:server
+    environment:
+    - PORT=8012
+    - VIRTUAL_HOST=ui.etelaranta.localhost
+    ports:
+    - 8012:8012
