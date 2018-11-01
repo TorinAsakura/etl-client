@@ -49,8 +49,14 @@ export const module = {
                 alias: {
                   ER: path.join(__dirname, 'src'),
                   ERUI: path.join(__dirname, '../../../ui/src'),
+                  ERAuth: path.join(__dirname, '../../../auth/src'),
                 },
                 extract: true,
+              }],
+              ['babel-plugin-inline-import', {
+                extensions: [
+                  '.md',
+                ],
               }],
             ],
           },
@@ -117,6 +123,9 @@ export const plugins = [
     inject: false,
     template: htmlTemplate,
     appMountId: 'app',
+    links: [
+      'https://fonts.googleapis.com/css?family=Roboto:400,500,700',
+    ],
   }),
   new webpack.DefinePlugin({
     'process.env.API_URL': JSON.stringify(process.env.API_URL || 'https://gateway.stage.etelaranta.com/graphql'),

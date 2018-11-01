@@ -5,28 +5,138 @@ import { StyleSheet } from 'elementum'
 import { Table, Column } from 'react-virtualized'
 import Base from './Base'
 import { Text } from '../text'
+import messages from './messages'
 
 const mock = [
   {
-    id: '1',
-    pair: 'Solidity',
-    buy: 'ETH',
-    sell: '0.0000500',
-    changes: '+0.22%',
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
   },
   {
-    id: '2',
-    pair: 'Solidity',
-    buy: 'ETH',
-    sell: '0.0000100',
-    changes: '-0.22%',
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
   },
   {
-    id: '3',
-    pair: 'Solidity',
-    buy: 'ETH',
-    sell: '0.0000100',
-    changes: '+0.22%',
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
+  },
+  {
+    id: Math.random().toFixed(4),
+    date: '22:45 27.10.18',
+    pair: Math.random().toFixed(8),
+    action: 'BUY',
+    price: Math.random().toFixed(8),
+    amount: Math.random().toFixed(8),
+    partly: Math.random().toFixed(8),
+    total: Math.random().toFixed(8),
   },
 ]
 
@@ -56,7 +166,6 @@ const styles = StyleSheet.create({
       lineHeight: '1.2',
     },
     '& .ReactVirtualized__Table__headerTruncatedText': {
-      display: 'inline-block',
       maxWidth: '100%',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
@@ -71,7 +180,7 @@ const styles = StyleSheet.create({
       fontSize: '13px',
       textTransform: 'none',
       '&:first-of-type': {
-        paddingLeft: '10px',
+        paddingLeft: '1px',
       },
     },
     '& .ReactVirtualized__Table__headerColumn': {
@@ -84,7 +193,7 @@ const styles = StyleSheet.create({
       textTransform: 'none',
       borderBottom: '1px solid #E6E6E6',
       '&:first-of-type': {
-        paddingLeft: '10px',
+        paddingLeft: '1px',
       },
     },
     '& .ReactVirtualized__Table__sortableHeaderColumn': {
@@ -107,16 +216,17 @@ const styles = StyleSheet.create({
 
 const ChoosePair = ({
   list = mock,
+  intl,
 }) => (
   <Base size='2x1'>
     <Layout>
       <Text
         size='small'
-        color='gray444'
+        color='blue800'
         weight='medium'
         uppercase
       >
-        My Active Orders
+        {intl.formatMessage(messages.activeOrders)}
       </Text>
     </Layout>
     <Layout basis='16px' />
@@ -124,7 +234,7 @@ const ChoosePair = ({
       <Table
         width={734}
         headerHeight={33}
-        height={257}
+        height={280}
         rowHeight={33}
         rowCount={list.length}
         rowGetter={({ index }) => list[index]}
@@ -132,39 +242,39 @@ const ChoosePair = ({
         <Column
           label='Date'
           headerRenderer={({ label }) => label}
-          dataKey='pair'
-          width={76}
-          style={{ color: '#8A4DD0' }}
+          dataKey='date'
+          width={118}
         />
         <Column
           label='Pair'
-          dataKey='buy'
-          width={105}
+          dataKey='pair'
+          width={111}
         />
         <Column
           label='Action'
-          dataKey='sell'
-          width={105}
+          dataKey='action'
+          width={67}
+          style={{ color: '#FF8500' }}
         />
         <Column
           label='Price'
-          dataKey='sell'
-          width={105}
+          dataKey='price'
+          width={112}
         />
         <Column
           label='Amount'
-          dataKey='sell'
-          width={105}
+          dataKey='amount'
+          width={108}
         />
         <Column
           label='Partly'
-          dataKey='sell'
-          width={105}
+          dataKey='partly'
+          width={113}
         />
         <Column
           label='Total'
-          dataKey='sell'
-          width={105}
+          dataKey='total'
+          width={104}
         />
       </Table>
     </div>

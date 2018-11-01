@@ -4,15 +4,17 @@ import { StyleSheet } from 'elementum'
 const styles = StyleSheet.create({
   self: {
     display: 'flex',
-    borderRadius: '4px',
     border: 'none',
+    zIndex: '10',
+    boxSizing: 'border-box',
+    flexDirection: 'column',
+  },
+  'type=card': {
+    borderRadius: '4px',
     backgroundColor: '#FFF',
     boxShadow: '0 2px 4px 0 rgba(0,0,0,0.06)',
     padding: '16px',
-    zIndex: '10',
-    boxSizing: 'border-box',
     margin: '8px',
-    flexDirection: 'column',
   },
   'size=1x1': {
     width: '375px',
@@ -31,9 +33,10 @@ const styles = StyleSheet.create({
 const Base = ({
   children,
   size = '1x1',
+  type = 'card',
 }) => (
   <div
-    className={styles({ size })}
+    className={styles({ size, type })}
   >
     {children}
   </div>

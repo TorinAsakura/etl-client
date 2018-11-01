@@ -1,36 +1,98 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import { Layout, Row } from 'flex-layouts'
+import { Layout } from 'flex-layouts'
 import { StyleSheet } from 'elementum'
 import { Table, Column } from 'react-virtualized'
 import Base from './Base'
-import { Block } from '../content'
 import { Text } from '../text'
-import { Switcher, SwitcherTab, SwitcherTabContent } from '../switcher'
-import { Button } from '../button'
-import { WithdrawalMIcon, DepositMIcon } from '../icons'
+import { Switcher, SwitcherTab} from '../switcher'
+import messages from './messages'
+import SwitcherTabContent from '../switcher/SwitcherTabContent'
 
 const mock = [
   {
-    id: '1',
+    id: Math.random().toFixed(4),
     pair: 'ETH',
-    buy: '0.0000200',
-    sell: '0.0000500',
-    changes: '+0.22%',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
   },
   {
-    id: '2',
-    pair: 'XRP',
-    buy: '0.0000100',
-    sell: '0.0000100',
-    changes: '-0.22%',
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
   },
   {
-    id: '3',
-    pair: 'XRP',
-    buy: '0.0000100',
-    sell: '0.0000100',
-    changes: '+0.22%',
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
+  },
+  {
+    id: Math.random().toFixed(4),
+    pair: 'ETH',
+    buy: Math.random().toFixed(8),
+    sell: Math.random().toFixed(8),
+    changes: `+${Math.random().toFixed(2)}`,
   },
 ]
 
@@ -60,7 +122,6 @@ const styles = StyleSheet.create({
       lineHeight: '1.2',
     },
     '& .ReactVirtualized__Table__headerTruncatedText': {
-      display: 'inline-block',
       maxWidth: '100%',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
@@ -112,6 +173,7 @@ const styles = StyleSheet.create({
 const ChoosePair = ({
   list = mock,
   match,
+  intl,
 }) => (
   <Base>
     <Layout>
@@ -121,56 +183,98 @@ const ChoosePair = ({
         weight='medium'
         uppercase
       >
-        Choose Pair
+        {intl.formatMessage(messages.choosePair)}
       </Text>
     </Layout>
     <Layout basis='16px' />
     <Switcher>
       <SwitcherTab
-        to={match.url}
+        to={match.path}
+        exact
       >
         BTC
       </SwitcherTab>
       <SwitcherTab
-        to={`${match.url}/2`}
+        to={`${match.path}2`}
       >
         ETH
       </SwitcherTab>
     </Switcher>
     <Layout basis='16px' />
-    <div className={styles()}>
-      <Table
-        width={343}
-        headerHeight={33}
-        height={217}
-        rowHeight={33}
-        rowCount={list.length}
-        rowGetter={({ index }) => list[index]}
-      >
-        <Column
-          label='Pair'
-          headerRenderer={({ label }) => label}
-          dataKey='pair'
-          width={76}
-          style={{ color: '#8A4DD0' }}
-        />
-        <Column
-          label='Buy'
-          dataKey='buy'
-          width={105}
-        />
-        <Column
-          label='Sell'
-          dataKey='sell'
-          width={105}
-        />
-        <Column
-          label='Changes'
-          dataKey='changes'
-          width={55}
-        />
-      </Table>
-    </div>
+    <SwitcherTabContent
+      path={match.path}
+    >
+      <div className={styles()}>
+        <Table
+          width={343}
+          headerHeight={33}
+          height={240}
+          rowHeight={33}
+          rowCount={list.length}
+          rowGetter={({ index }) => list[index]}
+        >
+          <Column
+            label='Pair'
+            headerRenderer={({ label }) => label}
+            dataKey='pair'
+            width={76}
+            style={{ color: '#8A4DD0' }}
+          />
+          <Column
+            label='Buy'
+            dataKey='buy'
+            width={105}
+          />
+          <Column
+            label='Sell'
+            dataKey='sell'
+            width={105}
+          />
+          <Column
+            label='Changes'
+            dataKey='changes'
+            width={55}
+          />
+        </Table>
+      </div>
+    </SwitcherTabContent>
+    <SwitcherTabContent
+      path={`${match.path}2`}
+    >
+      <div className={styles()}>
+        <Table
+          width={343}
+          headerHeight={33}
+          height={240}
+          rowHeight={33}
+          rowCount={list.length}
+          rowGetter={({ index }) => list[index]}
+        >
+          <Column
+            label='Pair'
+            headerRenderer={({ label }) => label}
+            dataKey='pair'
+            width={76}
+            style={{ color: '#8A4DD0' }}
+          />
+          <Column
+            label='Buy'
+            dataKey='sell'
+            width={105}
+          />
+          <Column
+            label='Sell'
+            dataKey='buy'
+            width={105}
+          />
+          <Column
+            label='Changes'
+            dataKey='changes'
+            width={55}
+          />
+        </Table>
+      </div>
+    </SwitcherTabContent>
   </Base>
 )
 

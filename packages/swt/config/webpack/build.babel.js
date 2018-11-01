@@ -75,8 +75,14 @@ export const module = {
                   ER: 'src',
                   ERUI: path.join(__dirname, '../../../ui/src'),
                   ERCommon: path.join(__dirname, '../../../common/src'),
+                  ERAuth: path.join(__dirname, '../../../auth/src'),
                 },
                 extract: true,
+              }],
+              ['babel-plugin-inline-import', {
+                extensions: [
+                  '.md',
+                ],
               }],
             ],
           },

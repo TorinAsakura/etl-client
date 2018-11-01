@@ -10,10 +10,18 @@ const styles = StyleSheet.create({
     height: '40px',
     boxSizing: 'border-box',
     cursor: 'pointer',
-    transition: 'border ease-in .2s',
+    transition: 'all ease-in 0.1s',
     borderRadius: '20px',
     backgroundColor: '#FF9600',
     color: '#FFF',
+    textTransform: 'uppercase',
+    fontFamily: 'Roboto',
+    fontSize: '14px',
+    fontWeight: '400',
+    lineHeight: 1.2,
+  },
+  'color=green700': {
+    backgroundColor: '#52BD00',
   },
   hide: {
     backgroundColor: '#FFF',
@@ -25,17 +33,13 @@ const SwitcherToggle = ({
   children,
   target,
   activeTab,
-  borderColor,
   onClick,
-  right,
-  left,
+  color,
 }) => (
   <div
     className={styles({
       hide: activeTab !== target,
-      borderColor,
-      right,
-      left,
+      color,
     })}
     onClick={() => onClick(target)}
   >
