@@ -11,10 +11,22 @@ const styles = StyleSheet.create({
     border: '0',
     outline: '0',
   },
+  'color=blue400': {
+    backgroundColor: '#E0F2FF',
+  },
 })
 
-const AuthButton = ({ children, props, onClick }) => (
-  <button {...props} className={styles()} onClick={onClick}>
+const AuthButton = ({
+  children,
+  onClick,
+  color,
+  ...props
+}) => (
+  <button
+    {...props}
+    className={styles({ color })}
+    onClick={onClick}
+  >
     {children}
   </button>
 )

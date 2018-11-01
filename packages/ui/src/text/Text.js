@@ -4,10 +4,9 @@ import { StyleSheet } from 'elementum'
 const styles = StyleSheet.create({
   self: {
     display: 'inline-flex',
+  },
+  'font=roboto': {
     fontFamily: '"Roboto", sans-serif',
-    fontWeight: 400,
-    lineHeight: 1.2,
-    color: '#000000',
   },
   'size=xxlarge': {
     fontSize: '36px',
@@ -70,10 +69,16 @@ const styles = StyleSheet.create({
     color: '#00bb27',
   },
   'color=white': {
-    color: '#ffffff',
+    color: '#FFF',
+  },
+  'color=black': {
+    color: '#000',
   },
   'weight=light': {
     fontWeight: 300,
+  },
+  'weight=normal': {
+    fontWeight: 400,
   },
   'weight=medium': {
     fontWeight: 500,
@@ -83,6 +88,9 @@ const styles = StyleSheet.create({
   },
   'align=center': {
     textAlign: 'center',
+  },
+  'lineHeight=normal': {
+    lineHeight: 1.2,
   },
   'lineHeight=extended': {
     lineHeight: 1.4,
@@ -95,11 +103,46 @@ const styles = StyleSheet.create({
   },
   'bgColor=blue1000': {
     backgroundColor: '#E0F2FF;',
-  }
+  },
+  uppercase: {
+    textTransform: 'uppercase',
+  },
+  lowercase: {
+    textTransform: 'lowercase',
+  },
 })
 
-const Text = ({ id, children, size = 'normal', color, weight, family, align, bgColor, lineHeight, round }) => (
-  <span id={id} className={styles({ size, color, weight, align, family, bgColor, lineHeight, round })}>
+const Text = ({
+  id,
+  children,
+  size = 'normal',
+  color = 'black',
+  weight = 'normal',
+  family,
+  align,
+  bgColor,
+  lineHeight = 'normal',
+  round,
+  font = 'roboto',
+  uppercase,
+  lowercase,
+}) => (
+  <span
+    id={id}
+    className={styles({
+      size,
+      color,
+      weight,
+      align,
+      family,
+      bgColor,
+      lineHeight,
+      round,
+      font,
+      uppercase,
+      lowercase,
+    })}
+  >
     {children}
   </span>
 )

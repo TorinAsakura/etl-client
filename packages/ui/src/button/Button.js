@@ -13,23 +13,16 @@ const styles = StyleSheet.create({
     borderRadius: '4px',
     border: '1px solid #FFA800',
     backgroundColor: '#FFA800',
-    boxShadow: '0 2px 4px 0 rgba(255, 168, 0, 0.3)',
     outline: '0',
     transition: '0.2s',
     cursor: 'pointer',
-    '&:hover': {
-      boxShadow: '0 2px 6px 0 rgba(255, 168, 0, 0.7)',
-    },
-    '&:active': {
-      boxShadow: '0 1px 2px 0 rgba(255, 168, 0, 0.3)',
-    },
-    '& path': {
-      fill: '#FFFFFF',
-      transition: '0.2s',
-    },
   },
   'height=medium': {
     height: '32px',
+  },
+  'size=small': {
+    height: '16px',
+    width: '16px',
   },
   'color=lightGray': {
     backgroundColor: '#8390AD',
@@ -42,6 +35,10 @@ const styles = StyleSheet.create({
       boxShadow: '0 1px 2px 0 rgba(41, 50, 70, 0.2)',
       color: '#FFA800',
     },
+  },
+  'color=gray700': {
+    backgroundColor: '#E0F2FF',
+    borderColor: '#E0F2FF',
   },
   'text=normal': {
     font: '600 11px SF UI Text',
@@ -60,6 +57,9 @@ const styles = StyleSheet.create({
     '&:active': {
       color: '#293246',
     },
+  },
+  'radius=round': {
+    borderRadius: '50%',
   },
   icon: {
     padding: '0 7px',
@@ -83,7 +83,17 @@ const styles = StyleSheet.create({
 })
 
 const Button = ({
-  children, props, text, color, height, disabled, textTransformNone, onClick, icon,
+  children,
+  text,
+  color,
+  height,
+  disabled,
+  textTransformNone,
+  onClick,
+  icon,
+  size,
+  radius,
+  ...props
 }) => (
   <button
     {...props}
@@ -95,6 +105,8 @@ const Button = ({
       textTransformNone,
       icon,
       disabled,
+      size,
+      radius,
     })}
     onClick={disabled ? null : onClick}
   >

@@ -17,10 +17,19 @@ const styles = StyleSheet.create({
   'color=mythic': {
     backgroundColor: '#E3E7F0',
   },
+  'color=gray900': {
+    backgroundColor: '#E6E6E6',
+  },
+  'color=blue': {
+    backgroundColor: '#1A9CFC',
+  },
   'hoverColor=brightGray': {
     '&:hover': {
       backgroundColor: '#3A3F53',
     },
+  },
+  'radius=large': {
+    borderRadius: '40px',
   },
   'radius=medium': {
     borderRadius: '18px',
@@ -48,15 +57,10 @@ const styles = StyleSheet.create({
     border: '1px solid #E3E7F0',
   },
   shadow: {
-    boxShadow: '0 2px 4px 0 rgba(131,144,173,0.05)',
+    boxShadow: '0 2px 4px 0 rgba(0,0,0,0.06)',
   },
   rounded: {
     borderRadius: '50%',
-  },
-  auth: {
-    borderRadius: '40px',
-    width: '407px',
-    height: '404px',
   },
   exchange: {
     borderRadius: '4px',

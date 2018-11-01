@@ -4,16 +4,16 @@ import { StyleSheet } from 'elementum'
 const styles = StyleSheet.create({
   self: {
     width: '100%',
-    height: '32px',
+    height: '48px',
     boxSizing: 'border-box',
     background: 'transparent',
     boxShadow: 'none',
-    border: '1px solid #e5e5e5',
-    borderRadius: '3px',
-    padding: '0 12px',
-    fontFamily: '"Ubuntu",sans-serif',
+    border: '1px solid #009AFF',
+    borderRadius: '22px',
+    padding: '0 24px',
+    fontFamily: 'Roboto, sans-serif',
     fontWeight: 400,
-    fontSize: '14px',
+    fontSize: '16px',
     color: '#262626',
     appearance: 'none',
     outline: 'none',
@@ -33,7 +33,13 @@ const styles = StyleSheet.create({
   },
 })
 
-const Input = ({ value, disabled, invalid, onChange, ...props }) => (
+const Input = ({
+  value,
+  disabled,
+  invalid,
+  onChange,
+  ...props
+}) => (
   <input
     {...props}
     value={value}
