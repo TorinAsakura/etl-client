@@ -7,18 +7,24 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     height: '24px',
-    width: '100%',
-    padding: '0',
     alignItems: 'center',
-    borderRadius: '4px',
-    border: '1px solid #FFA800',
-    backgroundColor: '#FFA800',
+    padding: '0',
+    boxSizing: 'border-box',
+    borderRadius: '20px',
+    border: 'none',
     outline: '0',
-    transition: '0.2s',
+    transition: 'all ease-in 0.2s',
     cursor: 'pointer',
+  },
+  fill: {
+    width: '100%',
   },
   'height=medium': {
     height: '32px',
+  },
+  'height=small': {
+    height: '22px',
+    padding: '0 9px',
   },
   'size=small': {
     height: '16px',
@@ -38,19 +44,57 @@ const styles = StyleSheet.create({
   },
   'color=gray700': {
     backgroundColor: '#E0F2FF',
-    borderColor: '#E0F2FF',
+    border: '1px solid #E0F2FF',
+    '&:hover': {
+      backgroundColor: '#009AFF',
+      borderColor: '#009AFF',
+      '& path': {
+        fill: '#FFF',
+        transition: 'all ease-in 0.2s',
+      },
+    },
+    '&:active': {
+      backgroundColor: '#9BD8FF',
+      borderColor: '#9BD8FF !important',
+      '& path': {
+        fill: '#FFF',
+        transition: 'all ease-in 0.2s',
+      },
+    },
+  },
+  'color=green700': {
+    backgroundColor: '#52BD00',
+    border: '2px solid #52BD00',
+    '&:hover': {
+      backgroundColor: '#FFF',
+      color: '#52BD00',
+    },
+    '&:active': {
+      backgroundColor: '#52BD00',
+    },
+  },
+  'color=orange600': {
+    backgroundColor: '#FFA800',
+    border: '2px solid #FFA800',
+    '&:hover': {
+      backgroundColor: '#FFF',
+      color: '#FFA800',
+    },
+    '&:active': {
+      backgroundColor: '#FFA800',
+    },
   },
   'text=normal': {
-    font: '600 11px SF UI Text',
-    lineHeight: '13px',
+    font: '400 14px Roboto',
+    lineHeight: 1.2,
     color: '#FFFFFF',
     textTransform: 'uppercase',
     '&:active': {
       color: '#293246',
     },
   },
-  'text=bold': {
-    font: 'bold 12px SF UI Text',
+  'text=medium': {
+    font: '500 14px Roboto',
     color: '#FFFFFF',
     lineHeight: '14px',
     textTransform: 'uppercase',
@@ -84,8 +128,8 @@ const styles = StyleSheet.create({
 
 const Button = ({
   children,
-  text,
-  color,
+  text = 'normal',
+  color = 'orange600',
   height,
   disabled,
   textTransformNone,
@@ -93,6 +137,7 @@ const Button = ({
   icon,
   size,
   radius,
+  fill,
   ...props
 }) => (
   <button
@@ -107,6 +152,7 @@ const Button = ({
       disabled,
       size,
       radius,
+      fill,
     })}
     onClick={disabled ? null : onClick}
   >

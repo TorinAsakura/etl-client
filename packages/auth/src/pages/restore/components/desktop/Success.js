@@ -8,28 +8,30 @@ import messages from '../../messages'
 const Restore = ({
   intl,
 }) => (
-  <Block
-    radius='large'
-  >
-    <Row justify='center'>
-      <Layout basis='327px'>
-        <Column>
-          <Layout basis='40px' />
-          <Layout justify='center'>
-            <Text
-              size='large'
-              weight='light'
-              color='gray444'
-              align='center'
-            >
-              {intl.formatMessage(messages.emailWithInstructions)}
-            </Text>
-          </Layout>
-          <Layout basis='40px' />
-        </Column>
-      </Layout>
-    </Row>
-  </Block>
+  <Layout basis='407px'>
+    <Block
+      radius='large'
+    >
+      <Row justify='center'>
+        <Layout basis='327px'>
+          <Column>
+            <Layout basis='40px' />
+            <Layout justify='center'>
+              <Text
+                size='large'
+                weight='light'
+                color='gray444'
+                align='center'
+              >
+                {intl.formatMessage(messages.emailWithInstructions)}
+              </Text>
+            </Layout>
+            <Layout basis='40px' />
+          </Column>
+        </Layout>
+      </Row>
+    </Block>
+  </Layout>
 )
 
 export default injectIntl(Restore)

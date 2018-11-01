@@ -1,5 +1,6 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
+import { Link } from 'react-router-dom'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Block } from '@er/ui/src/content'
 import { Logo } from '@er/ui/src/logo'
@@ -11,20 +12,24 @@ const App = ({ children, intl }) => (
     color='blue'
     heightFill
   >
-    <Column align='center' fill>
+    <Column
+      align='center'
+    >
       <Layout basis='64px' />
       <Layout>
-        <Logo color='white' fontColor='white' />
+        <Link
+          to='/auth'
+        >
+          <Logo color='white' fontColor='white' />
+        </Link>
       </Layout>
       <Layout basis='64px' />
       <Layout>
         <Row justify='center'>
-          <Layout basis='407px'>
-            {children}
-          </Layout>
+          {children}
         </Row>
       </Layout>
-      <Layout grow={1} />
+      <Layout basis='75px' grow={1} />
       <Layout justify='center'>
         <Text
           size='xsmall'

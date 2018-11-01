@@ -14,83 +14,83 @@ const Login = ({
   password,
   onChangeUsername,
   onChangePassword,
+  history,
 }) => (
-  <Block
-    radius='large'
-  >
-    <Row justify='center'>
-      <Layout basis='327px'>
-        <Column>
-          <Layout basis='40px' />
-          <Layout justify='center'>
-            <Text
-              size='large'
-              weight='light'
-              color='gray444'
-            >
-              {intl.formatMessage(messages.authorization)}
-            </Text>
-          </Layout>
-          <Layout basis='40px' />
-          <Layout justify='center'>
-            <AuthInput
-              placeholder={intl.formatMessage(messages.username)}
-              value={username}
-              onChange={onChangeUsername}
-            />
-          </Layout>
-          <Layout basis='16px' />
-          <Layout justify='center'>
-            <AuthInput
-              placeholder={intl.formatMessage(messages.password)}
-              type='password'
-              value={password}
-              onChange={onChangePassword}
-            />
-          </Layout>
-          <Layout basis='12px' />
-          <Layout>
-            <Row>
-              <Layout basis='24px' />
-              <Layout>
-                <NavLink to='/auth/restore'>
-                  <Text
-                    color='gray700'
-                    size='small'
-                  >
-                    {intl.formatMessage(messages.forgotPassword)}
-                  </Text>
-                </NavLink>
-              </Layout>
-            </Row>
-          </Layout>
-          <Layout basis='24px' />
-          <Layout>
-            <AuthButton>
+  <Layout basis='407px'>
+    <Block
+      radius='large'
+    >
+      <Row justify='center'>
+        <Layout basis='327px'>
+          <Column>
+            <Layout basis='40px' />
+            <Layout justify='center'>
               <Text
-                color='white'
-                weight='medium'
-                uppercase
+                size='large'
+                weight='light'
+                color='gray444'
+              >
+                {intl.formatMessage(messages.authorization)}
+              </Text>
+            </Layout>
+            <Layout basis='40px' />
+            <Layout justify='center'>
+              <AuthInput
+                placeholder={intl.formatMessage(messages.username)}
+                value={username}
+                onChange={onChangeUsername}
+              />
+            </Layout>
+            <Layout basis='16px' />
+            <Layout justify='center'>
+              <AuthInput
+                placeholder={intl.formatMessage(messages.password)}
+                type='password'
+                value={password}
+                onChange={onChangePassword}
+                onKeyPress={() => history.push('/auth/password')}
+              />
+            </Layout>
+            <Layout basis='12px' />
+            <Layout>
+              <Row>
+                <Layout basis='24px' />
+                <Layout>
+                  <NavLink to='/auth/restore'>
+                    <Text
+                      color='gray700'
+                      size='small'
+                    >
+                      {intl.formatMessage(messages.forgotPassword)}
+                    </Text>
+                  </NavLink>
+                </Layout>
+              </Row>
+            </Layout>
+            <Layout basis='24px' />
+            <Layout>
+              <AuthButton
+                onClick={() => history.push('/auth/password')}
               >
                 {intl.formatMessage(messages.login)}
-              </Text>
-            </AuthButton>
-          </Layout>
-          <Layout basis='24px' />
-          <Layout justify='center'>
-            <NavLink to='/auth/registration'>
-              <Text
-                color='blue800'
-              >
-                {intl.formatMessage(messages.registration)}
-              </Text>
-            </NavLink>
-          </Layout>
-          <Layout basis='40px' />
-        </Column>
-      </Layout>
-    </Row>
-  </Block>
+              </AuthButton>
+            </Layout>
+            <Layout basis='24px' />
+            <Layout justify='center'>
+              <NavLink to='/auth/registration'>
+                <Text
+                  color='blue800'
+                >
+                  {intl.formatMessage(messages.registration)}
+                </Text>
+              </NavLink>
+            </Layout>
+            <Layout basis='40px' />
+          </Column>
+        </Layout>
+      </Row>
+    </Block>
+  </Layout>
 )
 
 export default injectIntl(Login)

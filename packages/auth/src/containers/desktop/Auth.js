@@ -8,7 +8,6 @@ import Registration from '../../pages/registration/containers/desktop/Registrati
 import Agreement from '../../pages/registration/containers/desktop/Agreement'
 import Success from '../../pages/restore/containers/desktop/Success'
 
-
 const Auth = () => (
   <App>
     <Switch>

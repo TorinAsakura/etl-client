@@ -65,8 +65,14 @@ const styles = StyleSheet.create({
   'color=orange500': {
     color: '#ff6701',
   },
+  'color=orange700': {
+    color: '#FF8900',
+  },
   'color=green500': {
     color: '#00bb27',
+  },
+  'color=green700': {
+    color: '#52BD00',
   },
   'color=white': {
     color: '#FFF',

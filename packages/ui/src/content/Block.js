@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   heightFill: {
-    height: '100%',
+    minHeight: '100%',
   },
   sidebar: {
     background: 'linear-gradient(180deg, #4C526A 0%, #3A3F53 100%)',

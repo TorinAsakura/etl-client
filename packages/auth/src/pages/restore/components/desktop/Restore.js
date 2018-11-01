@@ -14,71 +14,68 @@ const Restore = ({
   onChangeEmail,
   history,
 }) => (
-  <Block
-    radius='large'
-  >
-    <Row justify='center'>
-      <Layout basis='327px'>
-        <Column>
-          <Layout basis='40px' />
-          <Layout justify='center'>
-            <Text
-              size='large'
-              weight='light'
-              color='gray444'
-            >
-              {intl.formatMessage(messages.passwordRecovery)}
-            </Text>
-          </Layout>
-          <Layout basis='40px' />
-          <Layout justify='center'>
-            <AuthInput
-              placeholder={intl.formatMessage(messages.email)}
-              value={email}
-              onChange={onChangeEmail}
-            />
-          </Layout>
-          <Layout basis='24px' />
-          <Layout>
-            <AuthButton
-              onClick={() => history.push('/auth/restore/success')}
-            >
+  <Layout basis='407px'>
+    <Block
+      radius='large'
+    >
+      <Row justify='center'>
+        <Layout basis='327px'>
+          <Column>
+            <Layout basis='40px' />
+            <Layout justify='center'>
               <Text
-                color='white'
-                weight='medium'
-                uppercase
+                size='large'
+                weight='light'
+                color='gray444'
+              >
+                {intl.formatMessage(messages.passwordRecovery)}
+              </Text>
+            </Layout>
+            <Layout basis='40px' />
+            <Layout justify='center'>
+              <AuthInput
+                placeholder={intl.formatMessage(messages.email)}
+                value={email}
+                onChange={onChangeEmail}
+                onKeyPress={() => history.push('/auth/restore/success')}
+              />
+            </Layout>
+            <Layout basis='24px' />
+            <Layout>
+              <AuthButton
+                onClick={() => history.push('/auth/restore/success')}
               >
                 {intl.formatMessage(messages.send)}
-              </Text>
-            </AuthButton>
-          </Layout>
-          <Layout basis='24px' />
-          <Layout justify='center'>
-            <NavLink to='/auth'>
-              <Text
-                color='blue800'
-                size='small'
-              >
-                {intl.formatMessage(messages.login)}
-              </Text>
-            </NavLink>
-          </Layout>
-          <Layout basis='16px' />
-          <Layout justify='center'>
-            <NavLink to='/auth/registration'>
-              <Text
-                color='blue800'
-                size='small'
-              >
-                {intl.formatMessage(messages.registration)}
-              </Text>
-            </NavLink>
-          </Layout>
-          <Layout basis='40px' />
-        </Column>
-      </Layout>
-    </Row>
-  </Block>
+              </AuthButton>
+            </Layout>
+            <Layout basis='24px' />
+            <Layout justify='center'>
+              <NavLink to='/auth'>
+                <Text
+                  color='blue800'
+                  size='small'
+                >
+                  {intl.formatMessage(messages.login)}
+                </Text>
+              </NavLink>
+            </Layout>
+            <Layout basis='16px' />
+            <Layout justify='center'>
+              <NavLink to='/auth/registration'>
+                <Text
+                  color='blue800'
+                  size='small'
+                >
+                  {intl.formatMessage(messages.registration)}
+                </Text>
+              </NavLink>
+            </Layout>
+            <Layout basis='40px' />
+          </Column>
+        </Layout>
+      </Row>
+    </Block>
+  </Layout>
 )
 
 export default injectIntl(Restore)
