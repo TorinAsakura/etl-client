@@ -1,7 +1,7 @@
 {
-  "name": "@swt/auth",
+  "name": "@er/auth",
   "version": "1.0.0",
-  "main": "auth/src/index.js",
+  "main": "src/",
   "license": "MIT",
   "scripts": {
     "lint": "eslint src -f table"
