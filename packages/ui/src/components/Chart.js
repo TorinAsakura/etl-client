@@ -8,8 +8,14 @@ import { Text } from '../text'
 import messages from './messages'
 
 
-const Chart = ({ intl }) => (
-  <Base size='2x1'>
+const Chart = ({
+  intl,
+  mobile,
+}) => (
+  <Base
+    size='2x1'
+    mobile={mobile}
+  >
     <Layout>
       <Text
         size='small'
@@ -24,8 +30,9 @@ const Chart = ({ intl }) => (
     <Layout grow={1}>
       <Block>
         <TradingViewWidget
+          width={734}
+          height={288}
           locale='ru'
-          autosize
         />
       </Block>
     </Layout>

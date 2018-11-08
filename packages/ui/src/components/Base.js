@@ -28,15 +28,20 @@ const styles = StyleSheet.create({
     width: '375px',
     height: '702px',
   },
+  mobile: {
+    margin: '4px 0',
+    overflowX: 'auto',
+  },
 })
 
 const Base = ({
   children,
   size = '1x1',
   type = 'card',
+  mobile,
 }) => (
   <div
-    className={styles({ size, type })}
+    className={styles({ size, type, mobile })}
   >
     {children}
   </div>

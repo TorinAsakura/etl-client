@@ -67,17 +67,22 @@ const styles = StyleSheet.create({
 })
 
 const ChoosePair = ({
-  activeTab = 'buy',
+  toggle = 'buy',
   amount,
-  onChangeActiveTab,
+  onChangeToggle,
   onChangeAmount,
   intl,
-}) => (
-  <Base>
+  mobile,
+}) => {
+  console.log()
+  return (
+  <Base
+    mobile={mobile}
+  >
     <div
       className={styles({
-        left: activeTab === 'buy',
-        right: activeTab === 'sell',
+        left: toggle === 'buy',
+        right: toggle === 'sell',
       })}
     >
       <div>
@@ -104,16 +109,16 @@ const ChoosePair = ({
       <SwitcherToggleContainer>
         <SwitcherToggle
           target='buy'
-          activeTab={activeTab}
-          onClick={onChangeActiveTab}
+          activeTab={toggle}
+          onClick={onChangeToggle}
         >
           {intl.formatMessage(messages.buy)}
         </SwitcherToggle>
         <SwitcherToggle
           target='sell'
-          activeTab={activeTab}
-          onClick={onChangeActiveTab}
-          color={activeTab === 'sell' ? 'green700' : null}
+          activeTab={toggle}
+          onClick={onChangeToggle}
+          color={toggle === 'sell' ? 'green700' : null}
         >
           {intl.formatMessage(messages.sell)}
         </SwitcherToggle>
@@ -172,11 +177,12 @@ const ChoosePair = ({
       <Row>
         <Layout basis='36px' />
         <HintInput
-          type='number'
           align='dynamic'
           value={amount}
           onChange={onChangeAmount}
           onKeyPress={({ target }) => console.log(target.value)}
+          mask={[/\d/, '.', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
+          guide={false}
           rightHint={(
             <Hint
               align='right'
@@ -196,6 +202,6 @@ const ChoosePair = ({
       </Row>
     </Layout>
   </Base>
-)
+)}
 
 export default injectIntl(ChoosePair)

@@ -127,8 +127,11 @@ const styles = StyleSheet.create({
 const Balances = ({
   list = mock,
   intl,
+  mobile,
 }) => (
-  <Base>
+  <Base
+    mobile={mobile}
+  >
     <Layout>
       <Row align='center'>
         <Layout>

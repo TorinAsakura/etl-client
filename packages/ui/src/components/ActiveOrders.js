@@ -217,8 +217,12 @@ const styles = StyleSheet.create({
 const ChoosePair = ({
   list = mock,
   intl,
+  mobile,
 }) => (
-  <Base size='2x1'>
+  <Base
+    size='2x1'
+    mobile={mobile}
+  >
     <Layout>
       <Text
         size='small'

@@ -168,8 +168,11 @@ const ChoosePair = ({
   list = mock,
   intl,
   activeTab,
+  mobile,
 }) => (
-  <Base>
+  <Base
+    mobile={mobile}
+  >
     <Layout>
       <Text
         size='small'
