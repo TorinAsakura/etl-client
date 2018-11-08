@@ -4,11 +4,13 @@ import { change } from '../../actions'
 
 export default connect(
   state => ({
-    activeTab: state.main.activeTab,
+    toggle: state.main.toggle,
+    tab: state.main.tab,
     amount: state.main.amount,
   }),
   dispatch => ({
-    onChangeActiveTab: value => dispatch(change('activeTab', value)),
+    onChangeToggle: value => dispatch(change('toggle', value)),
+    onChangeTab: value => dispatch(change('tab', value)),
     onChangeAmount: value => dispatch(change('amount', value)),
   }),
 )(Main)

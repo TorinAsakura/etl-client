@@ -13,9 +13,11 @@ import {
 
 const Main = ({
   match,
-  activeTab,
+  toggle,
+  tab,
   amount,
-  onChangeActiveTab,
+  onChangeToggle,
+  onChangeTab,
   onChangeAmount,
 }) => (
   <Column align='center'>
@@ -33,20 +35,22 @@ const Main = ({
       <Row>
         <Layout>
           <ChoosePair
+            tab={tab}
+            onChangeTab={onChangeTab}
             match={match}
           />
         </Layout>
         <Layout>
           <Pair
             amount={amount}
-            activeTab={activeTab}
-            onChangeActiveTab={onChangeActiveTab}
+            toggle={toggle}
+            onChangeToggle={onChangeToggle}
             onChangeAmount={onChangeAmount}
           />
         </Layout>
         <Layout>
           <BuyOrders
-            activeTab={activeTab}
+            activeTab={toggle}
           />
         </Layout>
       </Row>

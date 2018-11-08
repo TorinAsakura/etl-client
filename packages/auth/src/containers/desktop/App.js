@@ -14,6 +14,7 @@ const App = ({ children, intl }) => (
   >
     <Column
       align='center'
+      fill
     >
       <Layout basis='64px' />
       <Layout>

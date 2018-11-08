@@ -2,7 +2,8 @@ import { createReducer } from '@er/utils'
 import * as actions from '../constants'
 
 const initialState = {
-  activeTab: 'buy',
+  toggle: 'buy',
+  tab: 'BTC',
   amount: '',
 }
 

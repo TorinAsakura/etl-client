@@ -14,7 +14,7 @@ const Restore = ({
   onChangeEmail,
   history,
 }) => (
-  <Layout basis='407px'>
+  <Layout basis='96vw'>
     <Block
       radius='large'
     >
