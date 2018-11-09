@@ -1,0 +1,33 @@
+@import '~reset.css';
+
+html, body {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+  background: #f1f2f2;
+  overflow-y: auto;
+}
+
+.tether-element {
+  z-index: 999;
+}
+
+.react-datepicker-wrapper {
+  display: block;
+}
+
+.react-datepicker__input-container {
+  display: block;
+}
+
+.react-datepicker-popper {
+  z-index: 3;
+}
