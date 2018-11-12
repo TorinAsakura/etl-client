@@ -1,49 +1,81 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { StyleSheet } from 'elementum'
-import { Text } from '../text'
 
 const styles = StyleSheet.create({
   self: {
     position: 'relative',
     display: 'inline-flex',
+    boxSizing: 'border-box',
     alignItems: 'center',
-    height: '24px',
+    justifyContent: 'center',
+    fontFamily: 'Roboto, sans-serif',
+    fontWeight: '500',
     color: '#009AFF',
     cursor: 'pointer',
-    borderRadius: '12px',
     textDecoration: 'none',
     transition: 'background-color ease-in .2s',
     zIndex: 2,
+    padding: '0 10px',
+    borderRadius: '20px',
     '& span': {
       background: 'none',
-      width: '44px',
+      minWidth: '44px',
     },
   },
   active: {
     backgroundColor: '#009AFF',
-    borderRadius: '12px',
-    color: '#FFFFFF',
-    width: '44px',
+    color: '#FFFFFF !important',
+    minWidth: '44px',
     zIndex: 6,
+  },
+  'height=large': {
+    height: '32px',
+  },
+  'height=normal': {
+    height: '24px',
+  },
+  'radius=large': {
+    borderRadius: '16px',
+  },
+  'radius=normal': {
+    borderRadius: '12px',
+  },
+  padding: {
+    padding: '0 16px',
+  },
+  'text=normal': {
+    fontSize: '16px',
+  },
+  'text=small': {
+    fontSize: '13px',
   },
 })
 
-const SwitcherTab = ({ to, exact, onClick, children }) => (
+const SwitcherTab = ({
+  to,
+  exact,
+  onClick,
+  children,
+  height = 'normal',
+  padding,
+  text = 'small',
+}) => (
   <NavLink
     to={to}
     exact={exact}
-    className={styles({ default: true })}
-    activeClassName={styles({ active: true })}
+    className={styles({
+      padding,
+      text,
+    })}
+    activeClassName={styles({
+      active: true,
+      height,
+      radius: height,
+    })}
     onClick={onClick}
   >
-    <Text
-      size='small'
-      height='small'
-      color='ebony'
-    >
-      {children}
-    </Text>
+    {children}
   </NavLink>
 )
 

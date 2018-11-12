@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
         paddingLeft: '64px',
         justifyContent: 'flex-start',
         background: '#009AFF',
-        clipPath: 'polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);\n',
       },
       '&:nth-child(2)': {
         height: '60px',
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
         paddingRight: '64px',
         justifyContent: 'flex-end',
         background: '#8A4DD0',
-        clipPath: 'polygon(0 0, 100% 0%, 100% 100%, 0 100%, 10% 50%)',
       },
     },
   },
@@ -52,6 +50,10 @@ const styles = StyleSheet.create({
         top: '0',
         height: '64px',
         width: '52%',
+        clipPath: 'polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);\n',
+      },
+      '&:nth-child(2)': {
+        clipPath: 'polygon(0 0, 100% 0%, 100% 100%, 0 100%, 10% 50%)',
       },
     },
   },
@@ -61,6 +63,10 @@ const styles = StyleSheet.create({
         top: '0',
         height: '64px',
         width: '52%',
+        clipPath: 'polygon(10% 0, 100% 0%, 100% 100%, 10% 100%, 0% 50%)',
+      },
+      '&:nth-child(1)': {
+        clipPath: 'polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%)',
       },
     },
   },
@@ -76,132 +82,133 @@ const ChoosePair = ({
 }) => {
   console.log()
   return (
-  <Base
-    mobile={mobile}
-  >
-    <div
-      className={styles({
-        left: toggle === 'buy',
-        right: toggle === 'sell',
-      })}
+    <Base
+      mobile={mobile}
     >
-      <div>
-        <Text
-          size='medium'
-          weight='bold'
-          color='white'
-        >
+      <div
+        className={styles({
+          left: toggle === 'buy',
+          right: toggle === 'sell',
+        })}
+      >
+        <div>
+          <Text
+            size='medium'
+            weight='bold'
+            color='white'
+          >
           BTC
-        </Text>
-      </div>
-      <div>
-        <Text
-          size='medium'
-          weight='bold'
-          color='white'
-        >
+          </Text>
+        </div>
+        <div>
+          <Text
+            size='medium'
+            weight='bold'
+            color='white'
+          >
           XRP
-        </Text>
+          </Text>
+        </div>
       </div>
-    </div>
-    <Layout basis='22px' />
-    <Layout justify='center'>
-      <SwitcherToggleContainer>
-        <SwitcherToggle
-          target='buy'
-          activeTab={toggle}
-          onClick={onChangeToggle}
-        >
-          {intl.formatMessage(messages.buy)}
-        </SwitcherToggle>
-        <SwitcherToggle
-          target='sell'
-          activeTab={toggle}
-          onClick={onChangeToggle}
-          color={toggle === 'sell' ? 'green700' : null}
-        >
-          {intl.formatMessage(messages.sell)}
-        </SwitcherToggle>
-      </SwitcherToggleContainer>
-    </Layout>
-    <Layout basis='25px' />
-    <Layout>
-      <Row>
-        <Layout basis='56px' />
-        <Text
-          size='small'
-          color='gray700'
-          weight='medium'
-        >
-          {intl.formatMessage(messages.balance)}
-        </Text>
-        <Layout grow={1} />
-        <Layout>
-          <Text
-            color='gray444'
+      <Layout basis='22px' />
+      <Layout justify='center'>
+        <SwitcherToggleContainer>
+          <SwitcherToggle
+            target='buy'
+            activeTab={toggle}
+            onClick={onChangeToggle}
           >
-            0.00200000
-          </Text>
-        </Layout>
-        <Layout basis='3px' />
-        <Layout>
+            {intl.formatMessage(messages.buy)}
+          </SwitcherToggle>
+          <SwitcherToggle
+            target='sell'
+            activeTab={toggle}
+            onClick={onChangeToggle}
+            color={toggle === 'sell' ? 'green700' : null}
+          >
+            {intl.formatMessage(messages.sell)}
+          </SwitcherToggle>
+        </SwitcherToggleContainer>
+      </Layout>
+      <Layout basis='25px' />
+      <Layout>
+        <Row>
+          <Layout basis='56px' />
           <Text
+            size='small'
             color='gray700'
-            uppercase
+            weight='medium'
           >
-            BTC
+            {intl.formatMessage(messages.balance)}
           </Text>
-        </Layout>
-        <Layout basis='56px' />
-      </Row>
-    </Layout>
-    <Layout basis='17px' />
-    <Layout basis='1px'>
-      <Block color='gray900' />
-    </Layout>
-    <Layout basis='24px' />
-    <Layout>
-      <Row>
-        <Layout basis='56px' />
-        <Text
-          size='small'
-          color='gray700'
-          weight='medium'
-        >
-          {intl.formatMessage(messages.amount)}
-        </Text>
-      </Row>
-    </Layout>
-    <Layout basis='8px' />
-    <Layout>
-      <Row>
-        <Layout basis='36px' />
-        <HintInput
-          align='dynamic'
-          value={amount}
-          onChange={onChangeAmount}
-          onKeyPress={({ target }) => console.log(target.value)}
-          mask={[/\d/, '.', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
-          guide={false}
-          rightHint={(
-            <Hint
-              align='right'
-              transparent
+          <Layout grow={1} />
+          <Layout>
+            <Text
+              color='gray444'
             >
-              <Text
-                size='xsmall'
-                weight='bold'
-                color='gray700'
+            0.00200000
+            </Text>
+          </Layout>
+          <Layout basis='3px' />
+          <Layout>
+            <Text
+              color='gray700'
+              uppercase
+            >
+            BTC
+            </Text>
+          </Layout>
+          <Layout basis='56px' />
+        </Row>
+      </Layout>
+      <Layout basis='17px' />
+      <Layout basis='1px'>
+        <Block color='gray900' />
+      </Layout>
+      <Layout basis='24px' />
+      <Layout>
+        <Row>
+          <Layout basis='56px' />
+          <Text
+            size='small'
+            color='gray700'
+            weight='medium'
+          >
+            {intl.formatMessage(messages.amount)}
+          </Text>
+        </Row>
+      </Layout>
+      <Layout basis='8px' />
+      <Layout>
+        <Row>
+          <Layout basis='36px' />
+          <HintInput
+            align='dynamic'
+            value={amount}
+            onChange={onChangeAmount}
+            onKeyPress={({ target }) => console.log(target.value)}
+            mask={[/\d/, '.', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
+            guide={false}
+            rightHint={(
+              <Hint
+                align='right'
+                transparent
               >
+                <Text
+                  size='xsmall'
+                  weight='bold'
+                  color='gray700'
+                >
                 XRP
-              </Text>
-            </Hint>
+                </Text>
+              </Hint>
           )}
-        />
-        <Layout basis='36px' />
-      </Row>
-    </Layout>
-  </Base>
-)}
+          />
+          <Layout basis='36px' />
+        </Row>
+      </Layout>
+    </Base>
+  )
+}
 
 export default injectIntl(ChoosePair)

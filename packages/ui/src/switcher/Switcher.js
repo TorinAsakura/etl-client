@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
   self: {
     display: 'flex',
     width: '100%',
-    height: '24px',
     '& .tabs': {
       display: 'flex',
       flexDirection: 'row',
@@ -14,7 +13,18 @@ const styles = StyleSheet.create({
       width: '100%',
       borderRadius: '20px',
     },
-    '& span': {
+    '& .switcher_icon': {
+      display: 'none',
+    },
+  },
+  'height=large': {
+    height: '32px',
+  },
+  'height=normal': {
+    height: '24px',
+  },
+  star: {
+    '& .switcher_icon': {
       display: 'flex',
       width: '24px',
       height: '24px',
@@ -26,9 +36,17 @@ const styles = StyleSheet.create({
   },
 })
 
-const Switcher = ({ children }) => (
-  <div className={styles()}>
-    <span>
+const Switcher = ({
+  children,
+  star,
+  height = 'normal',
+}) => (
+  <div className={styles({
+    height,
+    star,
+  })}
+  >
+    <span className='switcher_icon'>
       <FavoritesIcon />
     </span>
     <div className='tabs'>
