@@ -10,7 +10,7 @@ import messages from '@er/swt/src/messages'
 const App = ({ children, intl }) => (
   <Block
     color='blue'
-    heightFill
+    height='fill'
   >
     <Column
       align='center'

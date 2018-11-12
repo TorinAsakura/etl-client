@@ -46,9 +46,12 @@ const styles = StyleSheet.create({
   overflowHidden: {
     overflow: 'hidden',
   },
-  heightFill: {
+  'height=fill': {
     minHeight: '100%',
     height: '100%',
+  },
+  'height=minfill': {
+    minHeight: '-webkit-fill-available',
   },
   sidebar: {
     background: 'linear-gradient(180deg, #4C526A 0%, #3A3F53 100%)',
@@ -75,6 +78,9 @@ const styles = StyleSheet.create({
   exchangeSplit: {
     height: '16px',
   },
+  'zIndex=high': {
+    zIndex: '3',
+  },
 })
 
 const Block = ({
@@ -86,7 +92,6 @@ const Block = ({
   sidebar,
   hoverColor,
   overflowHidden,
-  heightFill,
   border,
   shadow,
   topRadius,
@@ -95,6 +100,7 @@ const Block = ({
   exchange,
   exchangeSplit,
   height,
+  zIndex,
 }) => (
   <div
     className={styles({
@@ -105,7 +111,6 @@ const Block = ({
       sidebar,
       hoverColor,
       overflowHidden,
-      heightFill,
       border,
       shadow,
       topRadius,
@@ -114,6 +119,7 @@ const Block = ({
       exchange,
       exchangeSplit,
       height,
+      zIndex,
     })}
   >
     {children}
