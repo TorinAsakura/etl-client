@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
   'font=roboto': {
     fontFamily: '"Roboto", sans-serif',
   },
+  'size=xxxlarge': {
+    fontSize: '40px',
+  },
   'size=xxlarge': {
     fontSize: '36px',
   },
@@ -62,11 +65,17 @@ const styles = StyleSheet.create({
   'color=red400': {
     color: '#ff0000',
   },
+  'color=red600': {
+    color: '#FF4747',
+  },
   'color=orange500': {
     color: '#ff6701',
   },
   'color=orange700': {
     color: '#FF8900',
+  },
+  'color=green200': {
+    color: '#279E00',
   },
   'color=green500': {
     color: '#00bb27',
