@@ -193,7 +193,9 @@ const ChoosePair = ({
         </Text>
       </Layout>
       <Layout basis='16px' />
-      <Switcher>
+      <Switcher
+        star
+      >
         <SwitcherTab
           to={match.path}
           exact
