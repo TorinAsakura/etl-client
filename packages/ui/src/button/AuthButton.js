@@ -4,9 +4,12 @@ import { StyleSheet } from 'elementum'
 
 const styles = StyleSheet.create({
   self: {
-    height: '44px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: '100%',
     borderRadius: '22px',
+    padding: '0',
     border: '0',
     outline: '0',
     cursor: 'pointer',
@@ -30,10 +33,17 @@ const styles = StyleSheet.create({
       backgroundColor: '#9BD8FF',
     },
   },
-  'text=blue200': {
+  'fontSize=large': {
     fontFamily: 'Roboto',
     fontWeight: '500',
     fontSize: '16px',
+  },
+  'fontSize=medium': {
+    fontFamily: 'Roboto',
+    fontWeight: '500',
+    fontSize: '14px',
+  },
+  'text=blue200': {
     color: '#FFFFFF',
     '&:hover': {
       color: '#009AFF',
@@ -43,9 +53,6 @@ const styles = StyleSheet.create({
     },
   },
   'text=blue400': {
-    fontFamily: 'Roboto',
-    fontWeight: '500',
-    fontSize: '16px',
     color: '#009AFF',
     '&:hover': {
       color: '#FFFFFF',
@@ -54,17 +61,34 @@ const styles = StyleSheet.create({
       color: '#FFFFFF !important',
     },
   },
+  'height=large': {
+    height: '44px',
+  },
+  'height=medium': {
+    height: '22px',
+  },
+  uppercase: {
+    textTransform: 'uppercase',
+  },
 })
 
 const AuthButton = ({
   children,
   onClick,
   color = 'blue200',
+  uppercase,
+  height = 'large',
   ...props
 }) => (
   <button
     {...props}
-    className={styles({ color, text: color })}
+    className={styles({
+      color,
+      text: color,
+      uppercase,
+      height,
+      fontSize: height,
+    })}
     onClick={onClick}
   >
     {children}

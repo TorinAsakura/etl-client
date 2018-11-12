@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
   'color=green700': {
     backgroundColor: '#52BD00',
   },
+  'color=gray700': {
+    backgroundColor: '#A8A8A8',
+  },
   hide: {
     backgroundColor: '#FFF',
     color: '#444444',

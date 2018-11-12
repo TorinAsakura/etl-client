@@ -11,6 +11,7 @@ const Header = ({ intl, history }) => (
   <Block
     color='white'
     shadow
+    zIndex='high'
   >
     <Row align='center' fill>
       <Layout basis='10%' />
@@ -34,6 +35,14 @@ const Header = ({ intl, history }) => (
         <MenuButton icon='edit' />
       </Layout>
       <Layout grow={1} />
+      <Layout basis='80px'>
+        <AuthButton
+          onClick={() => history.push('/profile')}
+        >
+          Profile
+        </AuthButton>
+      </Layout>
+      <Layout basis='4px' />
       <Layout basis='88px'>
         <AuthButton
           color='blue400'
