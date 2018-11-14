@@ -6,3 +6,5 @@ pipeline:
       - docker-compose up -d
     volume:
       - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      event: push
