@@ -1,11 +1,8 @@
 pipeline:
-  client:
-    image: docker/compose
+  install:
+    image: node
     commands:
-      - docker-compose down
-      - docker-compose up -d
-    volume:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - yarn install
     when:
       event: push
       branch: dev
