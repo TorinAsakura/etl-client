@@ -20,7 +20,7 @@ pipeline:
     port: 22
     secrets: [ssh_key]
     script:
-      - upgrade.sh
+      - ./upgrade.sh
     when:
       branch: ["master", "dev"]
       event: [push]
