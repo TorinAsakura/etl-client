@@ -7,7 +7,7 @@ ADD . /app
 WORKDIR /app
 
 RUN yarn install
-RUN yarn workspace @swt/ui docs:build
+RUN yarn workspace @er/ui docs:build
 
 FROM nginx
 
