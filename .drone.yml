@@ -15,9 +15,12 @@ pipeline:
 
   ssh:
     image: appleboy/drone-ssh
-    secret: [stage_frontend_host, ssh_key]
-    host: ${STAGE_FRONTEND_HOST}
+    host: stage.etelaranta.net
     username: root
     port: 22
+    secrets: [ssh_key]
     script:
       - docker pull aleserche/er-client-swt
+    when:
+      branch: ["master", "dev"]
+      event: [push]
