@@ -6,3 +6,13 @@ pipeline:
     when:
       event: push
       branch: dev
+
+  start:
+    image: docker/compose
+    commands:
+      - docker-compose up
+    volume:
+      - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      event: push
+      branch: dev
