@@ -4,7 +4,7 @@ pipeline:
     secrets: [ docker_username, docker_password ]
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    repo: aleserche/er-client
+    repo: aleserche/er-client-swt
     tags:
       - latest
       - ${DRONE_BRANCH}
