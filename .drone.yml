@@ -1,11 +1,29 @@
 pipeline:
-  client:
-    image: docker/compose
+  install:
+    images: node
     commands:
-      - docker-compose down
-      - docker-compose up -d
-    volume:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - yarn install
+
+  sync_locales:
+    image: node
+    secrets: [ lokalise_api_token ]
+    commands:
+      - yarn locales:extract
+      - yarn locales:upload
     when:
       event: push
-      branch: dev
+
+  publish-client-ui-docker:
+    image: plugins/docker
+    secrets: [ docker_username, docker_password ]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    repo: aleserche/er-client
+    tags:
+      - latest
+      - ${DRONE_BRANCH}
+    dockerfile: ./Dockerfile-ui
+    context: ./
+    when:
+      branch: ["master", "dev"]
+      event: [push]
