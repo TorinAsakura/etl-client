@@ -1,7 +1,6 @@
 pipeline:
   publish-client-swt-docker:
     image: plugins/docker
-    privileged: true
     secrets: [ docker_username, docker_password ]
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
