@@ -20,7 +20,7 @@ pipeline:
     port: 22
     secrets: [ssh_key]
     script:
-      - docker pull aleserche/er-client-swt
+      - upgrade.sh
     when:
       branch: ["master", "dev"]
       event: [push]
