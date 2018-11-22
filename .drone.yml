@@ -9,7 +9,6 @@ pipeline:
       - latest
       - ${DRONE_BRANCH}
     dockerfile: ./Dockerfile-swt
-    context: ./
     when:
       branch: ["master", "dev"]
       event: [push]
