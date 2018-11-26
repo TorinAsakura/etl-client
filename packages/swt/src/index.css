@@ -14,6 +14,7 @@ body {
   height: 100%;
   background: #f1f2f2;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .tether-element {

@@ -22,6 +22,14 @@ const Header = ({ intl, history }) => (
         </Link>
       </Layout>
       <Layout grow={1} />
+
+      <Layout basis='60px'>
+        <AuthButton
+          onClick={() => history.push('/profile')}
+        >
+          Profile
+        </AuthButton>
+      </Layout>
       <Layout basis='82px'>
         <AuthButton
           color='blue400'

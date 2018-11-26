@@ -2,27 +2,26 @@ import { createReducer } from '@er/utils'
 import * as actions from '../constants/protection'
 
 const initialState = {
-  privateKey: '0127398137412030',
+  privateKey: '',
+  privateKeyLink: '',
+  verificationId: '',
   authCode: '',
   twoFAuth: false,
-  typeOfSuspension: '',
   suspensionPeriod: '',
-  suspensionPeriodOptions: [
+  typeOfSuspension: '',
+  typeOfSuspensionOptions: [
     {
-      id: '0',
-      name: '0',
+      id: 'deposit',
+      name: 'Deposit',
     },
     {
-      id: '1',
-      name: '1',
-    },
-    {
-      id: '2',
-      name: '2',
+      id: 'withdrawal',
+      name: 'Withdrawal',
     },
   ],
 }
 
 export default createReducer(initialState, {
   [actions.change]: (state, { field, value }) => ({ ...state, [field]: value }),
+  [actions.setErrors]: (state, { errors }) => ({ ...state, errors }),
 })

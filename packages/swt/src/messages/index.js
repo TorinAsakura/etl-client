@@ -9,12 +9,4 @@ export default defineMessages({
     id: 'header/registration',
     defaultMessage: 'Registration',
   },
-  copyright: {
-    id: 'app/copyright',
-    defaultMessage: 'Copyright © ETELARANTA 2018',
-  },
-  address: {
-    id: 'app/address',
-    defaultMessage: 'Address',
-  },
 })

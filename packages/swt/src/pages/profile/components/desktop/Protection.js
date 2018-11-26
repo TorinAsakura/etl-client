@@ -4,7 +4,7 @@ import { Layout, Row, Column } from 'flex-layouts'
 import { Text } from '@er/ui/src/text'
 import { Block } from '@er/ui/src/content'
 import { AuthButton } from '@er/ui/src/button'
-import { Input } from '@er/ui/src/input'
+import { Input, HintInput, Hint, CopyInput } from '@er/ui/src/input'
 import { Condition } from '@er/ui/src/condition'
 import { SwitcherToggle, SwitcherToggleContainer } from '@er/ui/src/switcher'
 import { Select } from '@er/ui/src/select'
@@ -14,15 +14,16 @@ import messages from '../../messages'
 const Protection = ({
   intl,
   privateKey,
+  privateKeyLink,
   authCode,
   twoFAuth,
   typeOfSuspension,
+  typeOfSuspensionOptions,
   suspensionPeriod,
-  suspensionPeriodOptions,
   onChangeAuthCode,
+  onTurnOn2FA,
   onChangeTypeOfSuspension,
   onChangeSuspensionPeriod,
-  onChangeTwoFAuth,
 }) => (
   <Column>
     <Layout basis='48px' />
@@ -67,8 +68,10 @@ const Protection = ({
               </Layout>
               <Layout basis='8px' />
               <Layout>
-                <Input
+                <CopyInput
                   value={privateKey}
+                  type='text'
+                  text={privateKey}
                 />
               </Layout>
               <Layout basis='18px' />
@@ -92,14 +95,16 @@ const Protection = ({
               <Input
                 value={authCode}
                 onChange={onChangeAuthCode}
+                data-lpignore
               />
             </Layout>
             <Layout basis='35px' />
             <Layout>
               <SwitcherToggleContainer>
                 <SwitcherToggle
+                  target={false}
                   activeTab={twoFAuth}
-                  onClick={onChangeTwoFAuth}
+                  onClick={() => console.log('TODO')}
                   color='gray700'
                 >
                   OFF
@@ -107,7 +112,7 @@ const Protection = ({
                 <SwitcherToggle
                   target
                   activeTab={twoFAuth}
-                  onClick={onChangeTwoFAuth}
+                  onClick={onTurnOn2FA}
                 >
                   ON
                 </SwitcherToggle>
@@ -120,7 +125,7 @@ const Protection = ({
           <Layout basis='69px' />
           <Layout basis='200px'>
             <QRCode
-              value={privateKey}
+              value={privateKeyLink}
             />
           </Layout>
         </Condition>
@@ -160,8 +165,9 @@ const Protection = ({
     <Layout>
       <Row>
         <Layout basis='327px'>
-          <Input
+          <Select
             value={typeOfSuspension}
+            options={typeOfSuspensionOptions}
             onChange={onChangeTypeOfSuspension}
           />
         </Layout>
@@ -186,10 +192,25 @@ const Protection = ({
     <Layout>
       <Row>
         <Layout basis='327px'>
-          <Select
+          <HintInput
             value={suspensionPeriod}
-            options={suspensionPeriodOptions}
             onChange={onChangeSuspensionPeriod}
+            mask={[/\d+/, /\d+/, /\d+/, /\d+/, /\d+/, /\d+/, /\d+/, /\d+/]}
+            guide={false}
+            rightHint={(
+              <Hint
+                align='right'
+              >
+                <Text
+                  size='xsmall'
+                  color='gray700'
+                  weight='bold'
+                  uppercase
+                >
+                  {intl.formatMessage(messages.days)}
+                </Text>
+              </Hint>
+            )}
           />
         </Layout>
       </Row>
