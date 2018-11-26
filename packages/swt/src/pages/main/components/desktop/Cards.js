@@ -17,9 +17,9 @@ import { change, initSocket, closeSocket } from '../../actions'
 
 const styles = StyleSheet.create({
   self: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    width: '1200px',
+    display: 'grid',
+    gridTemplate: '343px 343px 343px 343px / 375px 375px 375px',
+    gridGap: '8px',
   },
 })
 
@@ -37,14 +37,20 @@ class Cards extends PureComponent {
       cards: [
         {
           id: 1,
+          width: 1,
+          height: 1,
           component: <Balances />,
         },
         {
           id: 2,
+          width: 1,
+          height: 1,
           component: <Chart />,
         },
         {
           id: 3,
+          width: 1,
+          height: 1,
           component: <ChoosePair
             tab={props.tab}
             onChangeTab={props.onChangeTab}
@@ -53,6 +59,8 @@ class Cards extends PureComponent {
         },
         {
           id: 4,
+          width: 1,
+          height: 1,
           component: <Pair
             amount={props.amount}
             toggle={props.toggle}
@@ -62,6 +70,8 @@ class Cards extends PureComponent {
         },
         {
           id: 5,
+          width: 1,
+          height: 1,
           component: <BuyOrders
             activeTab={props.toggle}
             orders={props.orders}
@@ -69,14 +79,20 @@ class Cards extends PureComponent {
         },
         {
           id: 6,
+          width: 1,
+          height: 1,
           component: <ActiveOrders />,
         },
         {
           id: 7,
+          width: 1,
+          height: 1,
           component: <TradingHistory />,
         },
         {
           id: 8,
+          width: 1,
+          height: 1,
           component: <SolidityDetail />,
         },
       ],

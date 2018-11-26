@@ -1,64 +1,77 @@
 /* eslint-disable react/no-find-dom-node,consistent-return */
-import React, { Component } from 'react'
+import React from 'react'
+import { StyleSheet } from 'elementum'
 import {
   DragSource,
   DropTarget,
 } from 'react-dnd'
 
-const cardSource = {
-  beginDrag(props) {
-    return {
-      id: props.id,
-      index: props.index,
-    }
+const styles = StyleSheet.create({
+  self: {},
+  'height=1': {
+    gridRow: 'auto',
   },
-}
-
-const cardTarget = {
-  drop(props, monitor, component) {
-    if (!component) {
-      return null
-    }
-
-    const dragIndex = monitor.getItem().index
-    const hoverIndex = props.index
-
-    if (dragIndex === hoverIndex) {
-      return
-    }
-
-    props.moveCard(dragIndex, hoverIndex)
+  'height=2': {
+    gridRowEnd: 'span 2',
   },
-}
+  'width=1': {
+    gridColumn: 'auto',
+  },
+  'width=2': {
+    gridColumnEnd: 'span 2',
+  },
+})
 
-class Card extends Component {
-  render() {
-    const {
-      children,
-      connectDragSource,
-      connectDropTarget,
-    } = this.props
-
-    return connectDragSource(
-      connectDropTarget(
-        <div>
-          {children}
-        </div>,
-      ),
-    )
-  }
-}
+const Card = ({
+  children,
+  connectDragSource,
+  connectDropTarget,
+  width,
+  height,
+}) => connectDragSource(
+  connectDropTarget(
+    <div
+      className={styles({ width, height })}
+    >
+      {children}
+    </div>,
+  ),
+)
 
 export default DropTarget(
   'card',
-  cardTarget,
+  {
+    drop(props, monitor, component) {
+      if (!component) {
+        return null
+      }
+
+      const dragIndex = monitor.getItem().index
+      const hoverIndex = props.index
+
+      if (dragIndex === hoverIndex) {
+        return
+      }
+
+      props.moveCard(dragIndex, hoverIndex)
+    },
+  }
+  ,
   connect => ({
     connectDropTarget: connect.dropTarget(),
   }),
 )(
   DragSource(
     'card',
-    cardSource,
+    {
+      beginDrag(props) {
+        return {
+          id: props.id,
+          index: props.index,
+        }
+      },
+    }
+    ,
     (connect, monitor) => ({
       connectDragSource: connect.dragSource(),
       isDragging: monitor.isDragging(),

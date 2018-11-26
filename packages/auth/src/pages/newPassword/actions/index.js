@@ -45,6 +45,11 @@ export const verifyResetPassword = ({ verificationId, code }) => async (dispatch
       type: actions.setErrors,
       errors: data.verifyResetPassword.errors,
     })
+    setTimeout(() =>
+      dispatch({
+        type: actions.setErrors,
+        errors: {},
+      }), 570)
   } else {
     dispatch(login(data.verifyResetPassword.token))
 

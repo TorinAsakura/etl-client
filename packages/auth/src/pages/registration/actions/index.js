@@ -54,6 +54,11 @@ export const register = () => async (dispatch, getState, client, history) => {
       type: actions.setErrors,
       errors: data.createAccount.errors,
     })
+    setTimeout(() =>
+      dispatch({
+        type: actions.setErrors,
+        errors: {},
+      }), 570)
   } else {
     history.push('/auth/registration/success')
 

@@ -33,6 +33,11 @@ export const initReset = () => async (dispatch, getState, client, history) => {
       type: actions.setErrors,
       errors: data.initiateResetPassword.errors,
     })
+    setTimeout(() =>
+      dispatch({
+        type: actions.setErrors,
+        errors: {},
+      }), 570)
   } else {
     history.push('/auth/restore/success')
 

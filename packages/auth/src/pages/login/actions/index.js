@@ -39,6 +39,11 @@ export const signin = () => async (dispatch, getState, client, history) => {
       type: actions.setErrors,
       errors: data.signin.errors,
     })
+    setTimeout(() =>
+      dispatch({
+        type: actions.setErrors,
+        errors: {},
+      }), 570)
   } else if (data.signin.token) {
     dispatch(login(data.signin.token))
   } else {

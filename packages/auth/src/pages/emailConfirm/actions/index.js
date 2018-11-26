@@ -40,6 +40,11 @@ export const verify = () => async (dispatch, getState, client) => {
       type: actions.setErrors,
       errors: data.createAccountVerify.errors,
     })
+    setTimeout(() =>
+      dispatch({
+        type: actions.setErrors,
+        errors: {},
+      }), 570)
   } else {
     dispatch(login(data.createAccountVerify.token))
 

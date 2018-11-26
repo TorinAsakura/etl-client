@@ -7,8 +7,8 @@ import { Text } from '@er/ui/src/text'
 import { NavLink } from '@er/ui/src/link'
 import { AuthButton } from '@er/ui/src/button'
 import { Checkbox } from '@er/ui/src/checkbox'
-import messages from '../../messages'
 import Input from '@er/ui/src/input/Input'
+import messages from '../../messages'
 
 const Registration = ({
   intl,
