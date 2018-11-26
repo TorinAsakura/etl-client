@@ -6,6 +6,7 @@ export default connect(
   state => ({
     username: state.auth.login.username,
     password: state.auth.login.password,
+    errors: state.auth.login.errors,
   }),
   dispatch => ({
     onChangeUsername: value => dispatch(change('username', value)),

@@ -7,6 +7,7 @@ const initialState = {
   password: '',
   confirmPassword: '',
   agree: false,
+  errors: {},
 }
 
 export default createReducer(initialState, {

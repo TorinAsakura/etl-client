@@ -75,5 +75,9 @@ export const enablePrivateKey = () => async (dispatch, getState, client) => {
       field: 'twoFAuth',
       value: true,
     })
+
+    dispatch({
+      type: actions.clean,
+    })
   }
 }

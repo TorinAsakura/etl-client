@@ -6,6 +6,7 @@ export default connect(
   state => ({
     password: state.auth.newPassword.password,
     confirmPassword: state.auth.newPassword.confirmPassword,
+    errors: state.auth.newPassword.errors,
   }),
   (dispatch, { match }) => ({
     onChangePassword: value => dispatch(change('password', value)),

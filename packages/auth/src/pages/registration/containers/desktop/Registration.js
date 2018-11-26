@@ -9,6 +9,7 @@ export default connect(
     password: state.auth.registration.password,
     confirmPassword: state.auth.registration.confirmPassword,
     agree: state.auth.registration.agree,
+    errors: state.auth.registration.errors,
   }),
   dispatch => ({
     onChangeUsername: value => dispatch(change('username', value)),

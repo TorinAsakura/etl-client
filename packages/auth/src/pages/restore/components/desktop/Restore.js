@@ -2,7 +2,7 @@ import React from 'react'
 import { injectIntl } from 'react-intl'
 import { Column, Layout, Row } from 'flex-layouts'
 import { Block } from '@er/ui/src/content'
-import { Input as AuthInput } from '@er/ui/src/input'
+import { Input } from '@er/ui/src/input'
 import { Text } from '@er/ui/src/text'
 import { NavLink } from '@er/ui/src/link'
 import { AuthButton } from '@er/ui/src/button'
@@ -11,6 +11,7 @@ import messages from '../../messages'
 const Restore = ({
   intl,
   email,
+  errors,
   onChangeEmail,
   onRestore,
 }) => (
@@ -33,11 +34,12 @@ const Restore = ({
             </Layout>
             <Layout basis='40px' />
             <Layout justify='center'>
-              <AuthInput
+              <Input
                 placeholder={intl.formatMessage(messages.email)}
                 value={email}
                 onChange={onChangeEmail}
                 onEnter={onRestore}
+                error={errors.email}
               />
             </Layout>
             <Layout basis='24px' />
