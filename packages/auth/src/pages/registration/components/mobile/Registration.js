@@ -8,6 +8,7 @@ import { NavLink } from '@er/ui/src/link'
 import { AuthButton } from '@er/ui/src/button'
 import { Checkbox } from '@er/ui/src/checkbox'
 import messages from '../../messages'
+import Input from '@er/ui/src/input/Input'
 
 const Registration = ({
   intl,
@@ -16,6 +17,7 @@ const Registration = ({
   password,
   confirmPassword,
   agree,
+  errors,
   onChangeUsername,
   onChangeEmail,
   onChangePassword,
@@ -46,6 +48,7 @@ const Registration = ({
                 placeholder={intl.formatMessage(messages.username)}
                 value={username}
                 onChange={onChangeUsername}
+                error={errors.login}
               />
             </Layout>
             <Layout basis='16px' />
@@ -54,6 +57,7 @@ const Registration = ({
                 placeholder={intl.formatMessage(messages.email)}
                 value={email}
                 onChange={onChangeEmail}
+                error={errors.email}
               />
             </Layout>
             <Layout basis='16px' />
@@ -63,6 +67,7 @@ const Registration = ({
                 placeholder={intl.formatMessage(messages.password)}
                 value={password}
                 onChange={onChangePassword}
+                error={errors.password}
               />
             </Layout>
             <Layout basis='16px' />

@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
       backgroundColor: '#9BD8FF',
     },
   },
+  'color=none': {
+    background: 'none',
+  },
   'fontSize=large': {
     fontFamily: 'Roboto',
     fontWeight: '500',

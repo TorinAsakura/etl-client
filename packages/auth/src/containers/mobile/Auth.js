@@ -7,6 +7,8 @@ import Restore from '../../pages/restore/containers/mobile/Restore'
 import Registration from '../../pages/registration/containers/mobile/Registration'
 import Agreement from '../../pages/registration/containers/mobile/Agreement'
 import Success from '../../pages/restore/containers/mobile/Success'
+import EmailConfirm from '../../pages/emailConfirm/containers/mobile/EmailConfirm'
+import NewPassword from '../../pages/newPassword/containers/mobile/NewPassword'
 
 const Auth = () => (
   <App>
@@ -16,8 +18,10 @@ const Auth = () => (
       <Route path='/auth/registration' exact component={Registration} />
       <Route path='/auth/registration/agreement' component={Agreement} />
       <Route path='/auth/registration/success' component={Success} />
+      <Route path='/auth/registration/confirm/:verificationId/:code' component={EmailConfirm} />
       <Route path='/auth/restore' exact component={Restore} />
       <Route path='/auth/restore/success' component={Success} />
+      <Route path='/auth/new-password/:verificationId/:code' component={NewPassword} />
     </Switch>
   </App>
 )

@@ -13,7 +13,6 @@ const Chart = ({
   mobile,
 }) => (
   <Base
-    size='2x1'
     mobile={mobile}
   >
     <Layout>
@@ -30,8 +29,9 @@ const Chart = ({
     <Layout grow={1}>
       <Block>
         <TradingViewWidget
-          width={734}
-          height={288}
+          autosize
+          height={694}
+          width={758}
           locale='ru'
         />
       </Block>

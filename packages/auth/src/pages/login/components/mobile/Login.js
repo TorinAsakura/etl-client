@@ -12,6 +12,7 @@ const Login = ({
   intl,
   username,
   password,
+  errors,
   onChangeUsername,
   onChangePassword,
   onLogin,
@@ -39,6 +40,7 @@ const Login = ({
                 placeholder={intl.formatMessage(messages.username)}
                 value={username}
                 onChange={onChangeUsername}
+                error={errors.login}
               />
             </Layout>
             <Layout basis='16px' />
@@ -48,6 +50,7 @@ const Login = ({
                 type='password'
                 value={password}
                 onChange={onChangePassword}
+                error={errors.password}
                 onKeyPress={onLogin}
               />
             </Layout>

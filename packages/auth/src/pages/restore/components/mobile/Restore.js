@@ -11,8 +11,9 @@ import messages from '../../messages'
 const Restore = ({
   intl,
   email,
+  errors,
   onChangeEmail,
-  history,
+  onRestore,
 }) => (
   <Layout basis='96vw'>
     <Block
@@ -37,13 +38,14 @@ const Restore = ({
                 placeholder={intl.formatMessage(messages.email)}
                 value={email}
                 onChange={onChangeEmail}
-                onKeyPress={() => history.push('/auth/restore/success')}
+                onEnter={onRestore}
+                error={errors.email}
               />
             </Layout>
             <Layout basis='24px' />
             <Layout>
               <AuthButton
-                onClick={() => history.push('/auth/restore/success')}
+                onClick={onRestore}
               >
                 {intl.formatMessage(messages.send)}
               </AuthButton>

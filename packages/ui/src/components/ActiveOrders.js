@@ -2,7 +2,7 @@ import React from 'react'
 import { injectIntl } from 'react-intl'
 import { Layout } from 'flex-layouts'
 import { StyleSheet } from 'elementum'
-import { Table, Column } from 'react-virtualized'
+import { Table, Column, AutoSizer } from 'react-virtualized'
 import Base from './Base'
 import { Text } from '../text'
 import messages from './messages'
@@ -142,7 +142,7 @@ const mock = [
 
 const styles = StyleSheet.create({
   self: {
-    flex: '0 0 auto',
+    flex: '0 0 100%',
     display: 'flex',
     '& .ReactVirtualized__Table': {
     },
@@ -220,7 +220,6 @@ const ChoosePair = ({
   mobile,
 }) => (
   <Base
-    size='2x1'
     mobile={mobile}
   >
     <Layout>
@@ -235,52 +234,56 @@ const ChoosePair = ({
     </Layout>
     <Layout basis='16px' />
     <div className={styles()}>
-      <Table
-        width={734}
-        headerHeight={33}
-        height={280}
-        rowHeight={33}
-        rowCount={list.length}
-        rowGetter={({ index }) => list[index]}
-      >
-        <Column
-          label='Date'
-          headerRenderer={({ label }) => label}
-          dataKey='date'
-          width={118}
-        />
-        <Column
-          label='Pair'
-          dataKey='pair'
-          width={111}
-        />
-        <Column
-          label='Action'
-          dataKey='action'
-          width={67}
-          style={{ color: '#FF8500' }}
-        />
-        <Column
-          label='Price'
-          dataKey='price'
-          width={112}
-        />
-        <Column
-          label='Amount'
-          dataKey='amount'
-          width={108}
-        />
-        <Column
-          label='Partly'
-          dataKey='partly'
-          width={113}
-        />
-        <Column
-          label='Total'
-          dataKey='total'
-          width={104}
-        />
-      </Table>
+      <AutoSizer>
+        {({ width, height }) => (
+          <Table
+            width={width}
+            headerHeight={33}
+            height={height - 32}
+            rowHeight={33}
+            rowCount={list.length}
+            rowGetter={({ index }) => list[index]}
+          >
+            <Column
+              label='Date'
+              headerRenderer={({ label }) => label}
+              dataKey='date'
+              width={118}
+            />
+            <Column
+              label='Pair'
+              dataKey='pair'
+              width={111}
+            />
+            <Column
+              label='Action'
+              dataKey='action'
+              width={67}
+              style={{ color: '#FF8500' }}
+            />
+            <Column
+              label='Price'
+              dataKey='price'
+              width={112}
+            />
+            <Column
+              label='Amount'
+              dataKey='amount'
+              width={108}
+            />
+            <Column
+              label='Partly'
+              dataKey='partly'
+              width={113}
+            />
+            <Column
+              label='Total'
+              dataKey='total'
+              width={104}
+            />
+          </Table>
+        )}
+      </AutoSizer>
     </div>
   </Base>
 )

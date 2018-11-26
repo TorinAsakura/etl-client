@@ -10,6 +10,7 @@ import messages from '../../messages'
 const GAuth = ({
   intl,
   code,
+  errors,
   onChangeCode,
   onConfirmCode,
 }) => (
@@ -36,6 +37,7 @@ const GAuth = ({
                 placeholder={intl.formatMessage(messages.enterPassword)}
                 value={code}
                 onChange={onChangeCode}
+                error={errors.code || errors.verificationId}
                 onEnter={onConfirmCode}
               />
             </Layout>
