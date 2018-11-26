@@ -19,6 +19,7 @@ const initialState = {
       name: 'Withdrawal',
     },
   ],
+  errors: {},
 }
 
 export default createReducer(initialState, {

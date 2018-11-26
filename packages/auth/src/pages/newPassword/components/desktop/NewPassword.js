@@ -11,6 +11,7 @@ const NewPassword = ({
   intl,
   password,
   confirmPassword,
+  errors,
   onChangePassword,
   onChangeConfirmPassword,
   onConfirm,
@@ -39,6 +40,7 @@ const NewPassword = ({
                 type='password'
                 value={password}
                 onChange={onChangePassword}
+                error={errors.code || errors.value || errors.verificationId}
               />
             </Layout>
             <Layout basis='24px' />
@@ -49,6 +51,7 @@ const NewPassword = ({
                 value={confirmPassword}
                 onChange={onChangeConfirmPassword}
                 onEnter={onConfirm}
+                error={errors.confirmation}
               />
             </Layout>
             <Layout basis='24px' />

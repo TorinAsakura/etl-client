@@ -26,12 +26,13 @@ const styles = StyleSheet.create({
   star: {
     '& .switcher_icon': {
       display: 'flex',
-      width: '24px',
+      minWidth: '24px',
       height: '24px',
       borderRadius: '50%',
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#E0F2FF',
+      marginRight: '4px',
     },
   },
   mobile: {

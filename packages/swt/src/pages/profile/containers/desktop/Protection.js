@@ -19,6 +19,7 @@ export default connect(
     typeOfSuspension: state.profile.protection.typeOfSuspension,
     typeOfSuspensionOptions: state.profile.protection.typeOfSuspensionOptions,
     suspensionPeriod: state.profile.protection.suspensionPeriod,
+    errors: state.profile.protection.errors,
   }),
   dispatch => ({
     onChangeAuthCode: value => dispatch(change('authCode', value)),

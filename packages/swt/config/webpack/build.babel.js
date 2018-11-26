@@ -37,7 +37,7 @@ export const optimization = {
 
 export const entry = [
   '@babel/polyfill',
-  './src/index.js',
+  './src/index',
 ]
 
 export const output = {
@@ -72,7 +72,7 @@ export const module = {
               '@babel/plugin-syntax-dynamic-import',
               ['elementum-tools/lib/babel/plugin', {
                 alias: {
-                  ER: 'src',
+                  ER: path.join(__dirname, 'src'),
                   ERUI: path.join(__dirname, '../../../ui/src'),
                   ERAuth: path.join(__dirname, '../../../auth/src'),
                 },

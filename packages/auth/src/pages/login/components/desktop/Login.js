@@ -2,7 +2,7 @@ import React from 'react'
 import { injectIntl } from 'react-intl'
 import { Column, Layout, Row } from 'flex-layouts'
 import { Block } from '@er/ui/src/content'
-import { Input as AuthInput } from '@er/ui/src/input'
+import { Input } from '@er/ui/src/input'
 import { Text } from '@er/ui/src/text'
 import { NavLink } from '@er/ui/src/link'
 import { AuthButton } from '@er/ui/src/button'
@@ -12,6 +12,7 @@ const Login = ({
   intl,
   username,
   password,
+  errors,
   onChangeUsername,
   onChangePassword,
   onLogin,
@@ -35,18 +36,20 @@ const Login = ({
             </Layout>
             <Layout basis='40px' />
             <Layout justify='center'>
-              <AuthInput
+              <Input
                 placeholder={intl.formatMessage(messages.username)}
                 value={username}
+                error={errors.email}
                 onChange={onChangeUsername}
               />
             </Layout>
             <Layout basis='16px' />
             <Layout justify='center'>
-              <AuthInput
+              <Input
                 placeholder={intl.formatMessage(messages.password)}
                 type='password'
                 value={password}
+                error={errors.password}
                 onChange={onChangePassword}
                 onEnter={onLogin}
               />
