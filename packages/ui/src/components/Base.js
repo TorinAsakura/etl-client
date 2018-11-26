@@ -1,7 +1,5 @@
 import React from 'react'
 import { StyleSheet } from 'elementum'
-import { DragSource, DropTarget } from 'react-dnd'
-import { itemType } from './utils/dnd'
 
 const styles = StyleSheet.create({
   self: {

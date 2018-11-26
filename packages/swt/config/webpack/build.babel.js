@@ -74,7 +74,6 @@ export const module = {
                 alias: {
                   ER: 'src',
                   ERUI: path.join(__dirname, '../../../ui/src'),
-                  ERCommon: path.join(__dirname, '../../../common/src'),
                   ERAuth: path.join(__dirname, '../../../auth/src'),
                 },
                 extract: true,
@@ -152,6 +151,9 @@ export const plugins = [
     inject: false,
     template: htmlTemplate,
     appMountId: 'app',
+    links: [
+      'https://fonts.googleapis.com/css?family=Roboto:300,400,500',
+    ],
   }),
   new webpack.LoaderOptionsPlugin({
     options: {
