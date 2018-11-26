@@ -7,10 +7,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     textDecoration: 'none',
   },
+  'icon=right': {
+    paddingRight: '8px',
+    '& svg': {
+      marginLeft: 'auto',
+    },
+  },
 })
 
 const NavLink = ({
-  to,
+  to = '',
   children,
 }) => (
   <Link

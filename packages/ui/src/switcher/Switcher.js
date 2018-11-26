@@ -34,16 +34,21 @@ const styles = StyleSheet.create({
       backgroundColor: '#E0F2FF',
     },
   },
+  mobile: {
+    overflowX: 'auto',
+  },
 })
 
 const Switcher = ({
   children,
   star,
   height = 'normal',
+  mobile,
 }) => (
   <div className={styles({
     height,
     star,
+    mobile,
   })}
   >
     <span className='switcher_icon'>

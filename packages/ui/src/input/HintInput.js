@@ -57,8 +57,16 @@ class HintInput extends Component {
 
   render() {
     const {
-      disabled, rightHint, leftHint, error,
-      color, warning, value, onChange, setRef, readonly,
+      disabled,
+      rightHint,
+      leftHint,
+      error,
+      color,
+      warning,
+      value,
+      onChange,
+      setRef,
+      readonly,
       ...props
     } = this.props
     return (

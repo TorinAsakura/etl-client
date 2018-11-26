@@ -178,6 +178,7 @@ const ChoosePair = ({
   mobile,
 }) => {
   const data = list.filter(i => i.pair === tab)
+
   return (
     <Base
       mobile={mobile}

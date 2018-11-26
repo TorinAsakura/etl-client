@@ -79,136 +79,133 @@ const ChoosePair = ({
   onChangeAmount,
   intl,
   mobile,
-}) => {
-  console.log()
-  return (
-    <Base
-      mobile={mobile}
+}) => (
+  <Base
+    mobile={mobile}
+  >
+    <div
+      className={styles({
+        left: toggle === 'buy',
+        right: toggle === 'sell',
+      })}
     >
-      <div
-        className={styles({
-          left: toggle === 'buy',
-          right: toggle === 'sell',
-        })}
-      >
-        <div>
-          <Text
-            size='medium'
-            weight='bold'
-            color='white'
-          >
+      <div>
+        <Text
+          size='medium'
+          weight='bold'
+          color='white'
+        >
           BTC
-          </Text>
-        </div>
-        <div>
-          <Text
-            size='medium'
-            weight='bold'
-            color='white'
-          >
-          XRP
-          </Text>
-        </div>
+        </Text>
       </div>
-      <Layout basis='22px' />
-      <Layout justify='center'>
-        <SwitcherToggleContainer>
-          <SwitcherToggle
-            target='buy'
-            activeTab={toggle}
-            onClick={onChangeToggle}
-          >
-            {intl.formatMessage(messages.buy)}
-          </SwitcherToggle>
-          <SwitcherToggle
-            target='sell'
-            activeTab={toggle}
-            onClick={onChangeToggle}
-            color={toggle === 'sell' ? 'green700' : null}
-          >
-            {intl.formatMessage(messages.sell)}
-          </SwitcherToggle>
-        </SwitcherToggleContainer>
-      </Layout>
-      <Layout basis='25px' />
-      <Layout>
-        <Row>
-          <Layout basis='56px' />
+      <div>
+        <Text
+          size='medium'
+          weight='bold'
+          color='white'
+        >
+          XRP
+        </Text>
+      </div>
+    </div>
+    <Layout basis='22px' />
+    <Layout justify='center'>
+      <SwitcherToggleContainer>
+        <SwitcherToggle
+          target='buy'
+          activeTab={toggle}
+          onClick={onChangeToggle}
+        >
+          {intl.formatMessage(messages.buy)}
+        </SwitcherToggle>
+        <SwitcherToggle
+          target='sell'
+          activeTab={toggle}
+          onClick={onChangeToggle}
+          color={toggle === 'sell' ? 'green700' : null}
+        >
+          {intl.formatMessage(messages.sell)}
+        </SwitcherToggle>
+      </SwitcherToggleContainer>
+    </Layout>
+    <Layout basis='25px' />
+    <Layout>
+      <Row>
+        <Layout basis='56px' />
+        <Text
+          size='small'
+          color='gray700'
+          weight='medium'
+        >
+          {intl.formatMessage(messages.balance)}
+        </Text>
+        <Layout grow={1} />
+        <Layout>
           <Text
-            size='small'
-            color='gray700'
-            weight='medium'
+            color='gray444'
           >
-            {intl.formatMessage(messages.balance)}
-          </Text>
-          <Layout grow={1} />
-          <Layout>
-            <Text
-              color='gray444'
-            >
             0.00200000
-            </Text>
-          </Layout>
-          <Layout basis='3px' />
-          <Layout>
-            <Text
-              color='gray700'
-              uppercase
-            >
-            BTC
-            </Text>
-          </Layout>
-          <Layout basis='56px' />
-        </Row>
-      </Layout>
-      <Layout basis='17px' />
-      <Layout basis='1px'>
-        <Block color='gray900' />
-      </Layout>
-      <Layout basis='24px' />
-      <Layout>
-        <Row>
-          <Layout basis='56px' />
-          <Text
-            size='small'
-            color='gray700'
-            weight='medium'
-          >
-            {intl.formatMessage(messages.amount)}
           </Text>
-        </Row>
-      </Layout>
-      <Layout basis='8px' />
-      <Layout>
-        <Row>
-          <Layout basis='36px' />
-          <HintInput
-            align='dynamic'
-            value={amount}
-            onChange={onChangeAmount}
-            onKeyPress={({ target }) => console.log(target.value)}
-            mask={[/\d/, '.', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
-            guide={false}
-            rightHint={(
-              <Hint
-                align='right'
-                transparent
+        </Layout>
+        <Layout basis='3px' />
+        <Layout>
+          <Text
+            color='gray700'
+            uppercase
+          >
+            BTC
+          </Text>
+        </Layout>
+        <Layout basis='56px' />
+      </Row>
+    </Layout>
+    <Layout basis='17px' />
+    <Layout basis='1px'>
+      <Block color='gray900' />
+    </Layout>
+    <Layout basis='24px' />
+    <Layout>
+      <Row>
+        <Layout basis='56px' />
+        <Text
+          size='small'
+          color='gray700'
+          weight='medium'
+        >
+          {intl.formatMessage(messages.amount)}
+        </Text>
+      </Row>
+    </Layout>
+    <Layout basis='8px' />
+    <Layout>
+      <Row>
+        <Layout basis='36px' />
+        <HintInput
+          align='dynamic'
+          value={amount}
+          onChange={onChangeAmount}
+          onKeyPress={({ target }) => console.log(target.value)}
+          mask={[/\d/, '.', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
+          guide={false}
+          rightHint={(
+            <Hint
+              align='right'
+              transparent
+            >
+              <Text
+                size='xsmall'
+                weight='bold'
+                color='gray700'
               >
-                <Text
-                  size='xsmall'
-                  weight='bold'
-                  color='gray700'
-                >
                 XRP
-                </Text>
-              </Hint>
+              </Text>
+            </Hint>
           )}
-          />
-          <Layout basis='36px' />
-        </Row>
-      </Layout>
-    </Base>
-  )
-}
+        />
+        <Layout basis='36px' />
+      </Row>
+    </Layout>
+  </Base>
+)
 
 export default injectIntl(ChoosePair)

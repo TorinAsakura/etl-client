@@ -7,11 +7,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     position: 'absolute',
     alignItems: 'center',
+    justifyContent: 'flex-end',
     flexShrink: '0',
     height: '24px',
     minWidth: '24px',
     borderRadius: '4px',
-    backgroundColor: '#e3e7f0',
+    backgroundColor: 'transparent',
     boxSizing: 'border-box',
     zIndex: 6,
     pointerEvents: 'none',
@@ -25,14 +26,15 @@ const styles = StyleSheet.create({
   'size=small': {
     minWidth: 'auto',
   },
-  transparent: {
-    backgroundColor: 'transparent',
-  },
 })
 
-const Hint = ({ align, size, transparent, children }) => (
+const Hint = ({
+  align,
+  size,
+  children,
+}) => (
   <Condition match={children}>
-    <span className={styles({ align, size, transparent })}>
+    <span className={styles({ align, size })}>
       {children}
     </span>
   </Condition>

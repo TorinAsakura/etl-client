@@ -1,13 +1,11 @@
 import React from 'react'
-import { injectIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Block } from '@er/ui/src/content'
 import { Logo } from '@er/ui/src/logo'
-import { Text } from '@er/ui/src/text'
-import messages from '@er/swt/src/messages'
+import { Footer } from '@er/ui/src/footer'
 
-const App = ({ children, intl }) => (
+const App = ({ children }) => (
   <Block
     color='blue'
     height='fill'
@@ -31,27 +29,11 @@ const App = ({ children, intl }) => (
         </Row>
       </Layout>
       <Layout basis='75px' grow={1} />
-      <Layout justify='center'>
-        <Text
-          size='xsmall'
-          weight='medium'
-          color='gray900'
-        >
-          {intl.formatMessage(messages.copyright)}
-        </Text>
+      <Layout>
+        <Footer />
       </Layout>
-      <Layout justify='center'>
-        <Text
-          size='xsmall'
-          weight='medium'
-          color='gray900'
-        >
-          {intl.formatMessage(messages.address)}
-        </Text>
-      </Layout>
-      <Layout basis='40px' />
     </Column>
   </Block>
 )
 
-export default injectIntl(App)
+export default App

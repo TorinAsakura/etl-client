@@ -4,6 +4,7 @@ import ArrowInputIcon from './ArrowInputIcon'
 import CancelSearchIcon from './CancelSearchIcon'
 import CheckIcon from './CheckIcon'
 import ClosedModalIcon from './ClosedModalIcon'
+import CopyIcon from './CopyIcon'
 import DepositMIcon from './DepositMIcon'
 import EditHorizontalIcon from './EditHorizontalIcon'
 import EditMoveIcon from './EditMoveIcon'
@@ -24,6 +25,7 @@ export {
   CancelSearchIcon,
   CheckIcon,
   ClosedModalIcon,
+  CopyIcon,
   DepositMIcon,
   EditHorizontalIcon,
   EditMoveIcon,
