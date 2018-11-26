@@ -14,7 +14,7 @@ const Login = ({
   password,
   onChangeUsername,
   onChangePassword,
-  history,
+  onLogin,
 }) => (
   <Layout basis='407px'>
     <Block
@@ -48,7 +48,7 @@ const Login = ({
                 type='password'
                 value={password}
                 onChange={onChangePassword}
-                onKeyPress={() => history.push('/auth/password')}
+                onEnter={onLogin}
               />
             </Layout>
             <Layout basis='12px' />
@@ -70,7 +70,7 @@ const Login = ({
             <Layout basis='24px' />
             <Layout>
               <AuthButton
-                onClick={() => history.push('/auth/password')}
+                onClick={onLogin}
               >
                 {intl.formatMessage(messages.login)}
               </AuthButton>

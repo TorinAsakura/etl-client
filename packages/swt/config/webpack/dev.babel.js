@@ -124,11 +124,11 @@ export const plugins = [
     template: htmlTemplate,
     appMountId: 'app',
     links: [
-      'https://fonts.googleapis.com/css?family=Roboto:400,500,700',
+      'https://fonts.googleapis.com/css?family=Roboto:300,400,500',
     ],
   }),
   new webpack.DefinePlugin({
-    'process.env.API_URL': JSON.stringify(process.env.API_URL || 'https://gateway.stage.etelaranta.com/graphql'),
+    'process.env.API_URL': JSON.stringify(process.env.API_URL || 'https://stage.api.etelaranta.net/graphql'),
   }),
   new webpack.LoaderOptionsPlugin({
     options: {

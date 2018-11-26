@@ -15,35 +15,35 @@ const Registration = ({
       radius='large'
     >
       <Row justify='center'>
-          <Column>
-            <Layout basis='40px' />
-            <Layout justify='center'>
-              <Text
-                size='large'
-                weight='light'
-                color='gray444'
-              >
-                {intl.formatMessage(messages.userAgreement)}
-              </Text>
-            </Layout>
-            <Layout basis='40px' />
-            <Layout basis='625px'>
+        <Column>
+          <Layout basis='40px' />
+          <Layout justify='center'>
+            <Text
+              size='large'
+              weight='light'
+              color='gray444'
+            >
+              {intl.formatMessage(messages.userAgreement)}
+            </Text>
+          </Layout>
+          <Layout basis='40px' />
+          <Layout basis='625px'>
               Text
-            </Layout>
-            <Layout basis='32px' />
-            <Layout>
-              <Row justify='center'>
-                <Layout basis='327px'>
-                  <AuthButton
-                    onClick={() => history.goBack()}
-                  >
-                    {intl.formatMessage(messages.done)}
-                  </AuthButton>
-                </Layout>
-              </Row>
-            </Layout>
-            <Layout basis='40px' />
-          </Column>
+          </Layout>
+          <Layout basis='32px' />
+          <Layout>
+            <Row justify='center'>
+              <Layout basis='327px'>
+                <AuthButton
+                  onClick={() => history.goBack()}
+                >
+                  {intl.formatMessage(messages.done)}
+                </AuthButton>
+              </Layout>
+            </Row>
+          </Layout>
+          <Layout basis='40px' />
+        </Column>
       </Row>
     </Block>
   </Layout>
