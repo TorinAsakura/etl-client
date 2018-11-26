@@ -20,6 +20,19 @@ services:
     ports:
       - 8010:8010
 
+  swt-local:
+    image: node:alpine
+    working_dir: /workspace/packages/swt
+    volumes:
+      - ./:/workspace
+    entrypoint: yarn run dev
+    environment:
+      - PORT=8010
+      - VIRTUAL_HOST=etelaranta.localhost
+      - API_URL=http://0.0.0.0:3000/graphql
+    ports:
+      - 8010:8010
+
   ui:
     image: node:alpine
     working_dir: /workspace/packages/ui

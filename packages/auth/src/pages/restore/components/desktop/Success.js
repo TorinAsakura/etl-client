@@ -8,7 +8,7 @@ import messages from '../../messages'
 const Restore = ({
   intl,
 }) => (
-  <Layout basis='96vw'>
+  <Layout basis='407px'>
     <Block
       radius='large'
     >

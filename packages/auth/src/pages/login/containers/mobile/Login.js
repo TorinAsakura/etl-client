@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Login from '../../components/mobile/Login'
-import { change } from '../../actions'
+import { change, signin } from '../../actions'
 
 export default connect(
   state => ({
@@ -10,5 +10,6 @@ export default connect(
   dispatch => ({
     onChangeUsername: value => dispatch(change('username', value)),
     onChangePassword: value => dispatch(change('password', value)),
+    onLogin: () => dispatch(signin()),
   }),
 )(Login)

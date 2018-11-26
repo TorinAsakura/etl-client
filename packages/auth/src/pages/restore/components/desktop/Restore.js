@@ -12,9 +12,9 @@ const Restore = ({
   intl,
   email,
   onChangeEmail,
-  history,
+  onRestore,
 }) => (
-  <Layout basis='96vw'>
+  <Layout basis='407px'>
     <Block
       radius='large'
     >
@@ -37,13 +37,13 @@ const Restore = ({
                 placeholder={intl.formatMessage(messages.email)}
                 value={email}
                 onChange={onChangeEmail}
-                onKeyPress={() => history.push('/auth/restore/success')}
+                onEnter={onRestore}
               />
             </Layout>
             <Layout basis='24px' />
             <Layout>
               <AuthButton
-                onClick={() => history.push('/auth/restore/success')}
+                onClick={onRestore}
               >
                 {intl.formatMessage(messages.send)}
               </AuthButton>

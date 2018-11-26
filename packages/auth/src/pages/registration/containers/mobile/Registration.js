@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Registration from '../../components/mobile/Registration'
-import { change } from '../../actions'
+import { change, register } from '../../actions'
 
 export default connect(
   state => ({
@@ -16,5 +16,6 @@ export default connect(
     onChangePassword: value => dispatch(change('password', value)),
     onChangeConfirmPassword: value => dispatch(change('confirmPassword', value)),
     onChangeAgree: value => dispatch(change('agree', value)),
+    onRegister: () => dispatch(register()),
   }),
 )(Registration)

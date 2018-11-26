@@ -13,6 +13,6 @@ FROM nginx
 
 RUN rm -r /etc/nginx/conf.d
 
-COPY packages/swt/config/nginx /etc/nginx/conf.d
+COPY packages/dashboard/config/nginx /etc/nginx/conf.d
 
 COPY --from=builder /app/packages/swt/dist /app

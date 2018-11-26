@@ -21,7 +21,7 @@ const Registration = ({
   onChangePassword,
   onChangeConfirmPassword,
   onChangeAgree,
-  history,
+  onRegister,
 }) => (
   <Layout basis='96vw'>
     <Block
@@ -72,7 +72,7 @@ const Registration = ({
                 placeholder={intl.formatMessage(messages.confirmPassword)}
                 value={confirmPassword}
                 onChange={onChangeConfirmPassword}
-                onKeyPress={() => history.push('/auth')}
+                onEnter={onRegister}
               />
             </Layout>
             <Layout basis='16px' />
@@ -112,7 +112,7 @@ const Registration = ({
             <Layout basis='24px' />
             <Layout>
               <AuthButton
-                onClick={() => history.push('/auth')}
+                onClick={onRegister}
               >
                 {intl.formatMessage(messages.register)}
               </AuthButton>
