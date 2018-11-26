@@ -10,6 +10,7 @@ import {
   TradingHistory,
   SolidityDetail,
 } from '@er/ui/src/components'
+import { Footer } from '@er/ui/src/footer'
 
 const Main = ({
   match,
@@ -70,6 +71,10 @@ const Main = ({
       <TradingHistory
         mobile
       />
+    </Layout>
+    <Layout basis='35px' grow={1} />
+    <Layout>
+      <Footer />
     </Layout>
   </Column>
 )

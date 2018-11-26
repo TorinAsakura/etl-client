@@ -3,7 +3,7 @@ import { injectIntl } from 'react-intl'
 import { Layout, Row, Column } from 'flex-layouts'
 import { Text } from '@er/ui/src/text'
 import { AuthButton } from '@er/ui/src/button'
-import { Input } from '@er/ui/src/input'
+import { CopyInput } from '@er/ui/src/input'
 import { QRCode } from '@er/ui/src/users'
 import messages from '../../messages'
 
@@ -54,7 +54,7 @@ const ApiKeys = ({
             </Layout>
             <Layout basis='8px' />
             <Layout>
-              <Input
+              <CopyInput
                 value={apiKey}
               />
             </Layout>
@@ -75,7 +75,7 @@ const ApiKeys = ({
             </Layout>
             <Layout basis='8px' />
             <Layout>
-              <Input
+              <CopyInput
                 value={apiSecret}
               />
             </Layout>

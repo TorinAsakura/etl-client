@@ -2,10 +2,9 @@ import React from 'react'
 import { Row, Column, Layout } from 'flex-layouts'
 import { injectIntl } from 'react-intl'
 import { Switcher, SwitcherTab, SwitcherTabContent } from '@er/ui/src/switcher'
-import { Text } from '@er/ui/src/text'
 import { Block } from '@er/ui/src/content'
+import { Footer } from '@er/ui/src/footer'
 import messages from '../../messages'
-import rootMessages from '../../../../messages'
 import Profile from './Profile'
 import Balances from './Balances'
 import Orders from './Orders'
@@ -109,25 +108,9 @@ const Tabs = ({ intl }) => (
             </SwitcherTabContent>
           </Layout>
           <Layout basis='75px' grow={1} />
-          <Layout justify='center'>
-            <Text
-              size='xsmall'
-              weight='medium'
-              color='gray900'
-            >
-              {intl.formatMessage(rootMessages.copyright)}
-            </Text>
+          <Layout>
+            <Footer />
           </Layout>
-          <Layout justify='center'>
-            <Text
-              size='xsmall'
-              weight='medium'
-              color='gray900'
-            >
-              {intl.formatMessage(rootMessages.address)}
-            </Text>
-          </Layout>
-          <Layout basis='40px' />
         </Column>
       </Layout>
     </Row>
