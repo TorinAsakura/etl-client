@@ -12,9 +12,10 @@ const Auth = () => (
   <App>
     <Switch>
       <Route path='/auth' exact component={Login} />
-      <Route path='/auth/password' component={GAuth} />
+      <Route path='/auth/gauth' component={GAuth} />
       <Route path='/auth/registration' exact component={Registration} />
       <Route path='/auth/registration/agreement' component={Agreement} />
+      <Route path='/auth/registration/success' component={Success} />
       <Route path='/auth/restore' exact component={Restore} />
       <Route path='/auth/restore/success' component={Success} />
     </Switch>

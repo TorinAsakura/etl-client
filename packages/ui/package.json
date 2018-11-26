@@ -6,7 +6,7 @@
   "scripts": {
     "docs:server": "docsnow server --summary Readme.md --config config/docsnow.config.js",
     "docs:build": "docsnow build --summary Readme.md --config config/docsnow.config.js",
-    "lint": "eslint config src -f table"
+    "lint": "eslint src -f table"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -21,14 +21,13 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "react": "^16.5.1",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-intl": "^2.7.2",
     "react-onclickoutside": "^6.7.1",
     "react-qr-svg": "^2.1.0",
     "react-text-mask": "^5.4.3",
     "react-tradingview-widget": "^1.3.0",
-    "react-virtualized": "^9.21.0"
-  },
-  "dependencies": {
-    "prop-types": "^15.6.2"
+    "react-virtualized": "^9.21.0",
+    "tether": "^1.4.5"
   }
 }

@@ -9,9 +9,9 @@ import messages from '../../messages'
 
 const GAuth = ({
   intl,
-  password,
-  onChangePassword,
-  history,
+  code,
+  onChangeCode,
+  onConfirmCode,
 }) => (
   <Layout basis='407px'>
     <Block
@@ -34,15 +34,15 @@ const GAuth = ({
             <Layout>
               <AuthInput
                 placeholder={intl.formatMessage(messages.enterPassword)}
-                value={password}
-                onChange={onChangePassword}
-                onKeyPress={() => history.push('/')}
+                value={code}
+                onChange={onChangeCode}
+                onEnter={onConfirmCode}
               />
             </Layout>
             <Layout basis='24px' />
             <Layout>
               <AuthButton
-                onClick={() => history.push('/')}
+                onClick={onConfirmCode}
               >
                 {intl.formatMessage(messages.submit)}
               </AuthButton>

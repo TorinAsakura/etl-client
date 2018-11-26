@@ -8,86 +8,6 @@ import { Text } from '../text'
 import { Button } from '../button'
 import messages from './messages'
 
-const mock = [
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-  {
-    id: Math.random().toFixed(4),
-    pair: 'Solidity',
-    buy: 'BUY',
-    sell: Math.random().toFixed(8),
-    changes: `+${Math.random().toFixed(2)}`,
-  },
-]
-
 const styles = StyleSheet.create({
   self: {
     flex: '0 0 auto',
@@ -164,8 +84,8 @@ const styles = StyleSheet.create({
   },
 })
 
-const ChoosePair = ({
-  list = mock,
+const BuyOrders = ({
+  orders,
   intl,
   activeTab,
   mobile,
@@ -190,8 +110,8 @@ const ChoosePair = ({
         headerHeight={33}
         height={280}
         rowHeight={32}
-        rowCount={list.length}
-        rowGetter={({ index }) => list[index]}
+        rowCount={orders[activeTab].length}
+        rowGetter={({ index }) => orders[activeTab][index]}
         rowStyle={({ index }) => {
           if (index === 1) {
             return {
@@ -213,19 +133,19 @@ const ChoosePair = ({
         <Column
           label='Exchange'
           headerRenderer={({ label }) => label}
-          dataKey='pair'
+          dataKey='exchange'
           width={85}
         />
         <Column
           label='Action'
-          dataKey='buy'
+          dataKey={activeTab}
           width={86}
           cellRenderer={({ rowData }) => (
             <Button
               height='small'
               text='medium'
               color={activeTab === 'sell' ? 'green700' : 'orange600'}
-              onClick={() => console.log(`Buy ${rowData.id}`)}
+              onClick={() => console.log(rowData)}
             >
               {activeTab}
             </Button>
@@ -233,12 +153,12 @@ const ChoosePair = ({
         />
         <Column
           label='BTC'
-          dataKey='sell'
+          dataKey='price'
           width={103}
         />
         <Column
           label='Compare'
-          dataKey='changes'
+          dataKey='amount'
           width={57}
         />
       </Table>
@@ -246,4 +166,4 @@ const ChoosePair = ({
   </Base>
 )
 
-export default injectIntl(ChoosePair)
+export default injectIntl(BuyOrders)

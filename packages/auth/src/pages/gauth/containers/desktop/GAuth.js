@@ -1,12 +1,13 @@
 import { connect } from 'react-redux'
 import GAuth from '../../components/desktop/GAuth'
-import { change } from '../../actions'
+import { change, signinVerify } from '../../actions'
 
 export default connect(
   state => ({
-    password: state.auth.gauth.password,
+    code: state.auth.gauth.code,
   }),
   dispatch => ({
-    onChangePassword: value => dispatch(change('password', value)),
+    onChangeCode: value => dispatch(change('code', value)),
+    onConfirmCode: () => dispatch(signinVerify()),
   }),
 )(GAuth)

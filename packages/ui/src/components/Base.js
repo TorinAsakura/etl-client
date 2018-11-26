@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'elementum'
+import { DragSource, DropTarget } from 'react-dnd'
+import { itemType } from './utils/dnd'
 
 const styles = StyleSheet.create({
   self: {
@@ -8,8 +10,6 @@ const styles = StyleSheet.create({
     zIndex: '10',
     boxSizing: 'border-box',
     flexDirection: 'column',
-  },
-  'type=card': {
     borderRadius: '4px',
     backgroundColor: '#FFF',
     boxShadow: '0 2px 4px 0 rgba(0,0,0,0.06)',
@@ -32,16 +32,25 @@ const styles = StyleSheet.create({
     margin: '4px 0',
     overflowX: 'auto',
   },
+  isDragging: {
+    opacity: '0',
+  },
 })
 
 const Base = ({
   children,
   size = '1x1',
-  type = 'card',
   mobile,
+  isDragging,
+  ...props
 }) => (
   <div
-    className={styles({ size, type, mobile })}
+    className={styles({
+      size,
+      mobile,
+      isDragging,
+    })}
+    {...props}
   >
     {children}
   </div>

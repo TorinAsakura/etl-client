@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
     '&:active': {
       color: '#FFFFFF !important',
     },
+    '&:disabled': {
+      color: 'rgba(255, 255, 255, 0.24)',
+    },
   },
   'text=blue400': {
     color: '#009AFF',
@@ -59,6 +62,9 @@ const styles = StyleSheet.create({
     },
     '&:active': {
       color: '#FFFFFF !important',
+    },
+    '&:disabled': {
+      color: 'rgba(0, 154, 255, 0.24)',
     },
   },
   'height=large': {
@@ -78,6 +84,7 @@ const AuthButton = ({
   color = 'blue200',
   uppercase,
   height = 'large',
+  disabled,
   ...props
 }) => (
   <button
@@ -89,7 +96,8 @@ const AuthButton = ({
       height,
       fontSize: height,
     })}
-    onClick={onClick}
+    onClick={disabled ? null : onClick}
+    disabled={disabled}
   >
     {children}
   </button>
