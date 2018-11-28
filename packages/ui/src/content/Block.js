@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     width: '100%',
     transition: '0.2s',
-    backgroundColor: '#F5F8Fa',
   },
   'color=brightGray': {
     backgroundColor: '#3A3F53',
@@ -16,6 +15,9 @@ const styles = StyleSheet.create({
   },
   'color=mythic': {
     backgroundColor: '#E3E7F0',
+  },
+  'color=gray1200': {
+    backgroundColor: '#F4F4F4',
   },
   'color=gray900': {
     backgroundColor: '#E6E6E6',
@@ -85,8 +87,7 @@ const styles = StyleSheet.create({
 
 const Block = ({
   children,
-  color,
-  backgroundColor,
+  color = 'white',
   transparent,
   radius,
   sidebar,
@@ -105,7 +106,6 @@ const Block = ({
   <div
     className={styles({
       color,
-      backgroundColor,
       transparent,
       radius,
       sidebar,

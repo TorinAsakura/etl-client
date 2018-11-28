@@ -7,7 +7,6 @@ import BuyOrders from './BuyOrders'
 import ActiveOrders from './ActiveOrders'
 import TradingHistory from './TradingHistory'
 import SolidityDetail from './SolidityDetails'
-import DropCell from './DropCell'
 
 export {
   Balances,
@@ -19,5 +18,4 @@ export {
   ActiveOrders,
   TradingHistory,
   SolidityDetail,
-  DropCell,
 }

@@ -36,6 +36,11 @@ const styles = StyleSheet.create({
   'color=none': {
     background: 'none',
   },
+  'fontSize=xlarge': {
+    fontFamily: 'Roboto',
+    fontWeight: '500',
+    fontSize: '16px',
+  },
   'fontSize=large': {
     fontFamily: 'Roboto',
     fontWeight: '500',
@@ -69,6 +74,9 @@ const styles = StyleSheet.create({
     '&:disabled': {
       color: 'rgba(0, 154, 255, 0.24)',
     },
+  },
+  'height=xlarge': {
+    height: '48px',
   },
   'height=large': {
     height: '44px',

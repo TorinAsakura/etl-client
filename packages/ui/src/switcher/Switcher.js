@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: '#E0F2FF',
       marginRight: '4px',
+      '& svg': {
+        height: '12px',
+      },
     },
   },
   mobile: {
