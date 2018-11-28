@@ -14,15 +14,16 @@ import messages from '../../messages'
 const Protection = ({
   intl,
   privateKey,
+  privateKeyLink,
   authCode,
   twoFAuth,
   typeOfSuspension,
   typeOfSuspensionOptions,
   suspensionPeriod,
   onChangeAuthCode,
+  onTurnOn2FA,
   onChangeTypeOfSuspension,
   onChangeSuspensionPeriod,
-  onChangeTwoFAuth,
 }) => (
   <Row>
     <Layout basis='24px' />
@@ -42,7 +43,7 @@ const Protection = ({
         <Condition match={!twoFAuth}>
           <Layout justify='center'>
             <QRCode
-              value={privateKey}
+              value={privateKeyLink}
             />
           </Layout>
           <Layout basis='40px' />
@@ -109,7 +110,7 @@ const Protection = ({
           <SwitcherToggleContainer>
             <SwitcherToggle
               activeTab={twoFAuth}
-              onClick={onChangeTwoFAuth}
+              onClick={() => console.log('TODO')}
               color='gray700'
             >
               OFF
@@ -117,7 +118,7 @@ const Protection = ({
             <SwitcherToggle
               target
               activeTab={twoFAuth}
-              onClick={onChangeTwoFAuth}
+              onClick={onTurnOn2FA}
             >
               ON
             </SwitcherToggle>

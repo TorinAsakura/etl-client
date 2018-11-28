@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config=./config/webpack/dev.js --hot --history-api-fallback --disable-host-check --host=0.0.0.0 --port=$PORT",
-    "build": "webpack --config=./config/webpack/build.js --progress --display=minimal",
+    "build": "webpack --config=./config/webpack/build.js --progress --display=minimal --profile --debug --display-error-details",
     "lint": "eslint config src -f table"
   },
   "devDependencies": {

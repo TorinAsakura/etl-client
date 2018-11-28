@@ -7,7 +7,6 @@ const enhance = lifecycle({
   componentDidMount() {
     this.props.onLoad()
   },
-
 })
 
 export default connect(

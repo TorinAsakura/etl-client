@@ -1,6 +1,5 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import update from 'immutability-helper'
 import { StyleSheet } from 'elementum'
 import {
   Balances,
@@ -19,11 +18,11 @@ const styles = StyleSheet.create({
   self: {
     display: 'grid',
     gridTemplate: '343px 343px 343px 343px / 375px 375px 375px',
-    gridGap: '8px',
+    gridGap: '16px',
   },
 })
 
-class Cards extends PureComponent {
+class Cards extends Component {
   constructor(props) {
     super(props)
 
@@ -37,20 +36,26 @@ class Cards extends PureComponent {
       cards: [
         {
           id: 1,
-          width: 1,
-          height: 1,
+          width: '1',
+          height: '1',
+          x: '1',
+          y: '1',
           component: <Balances />,
         },
         {
           id: 2,
-          width: 1,
-          height: 1,
+          width: '2',
+          height: '1',
+          x: '2',
+          y: '1',
           component: <Chart />,
         },
         {
           id: 3,
-          width: 1,
-          height: 1,
+          width: '1',
+          height: '1',
+          x: '1',
+          y: '2',
           component: <ChoosePair
             tab={props.tab}
             onChangeTab={props.onChangeTab}
@@ -59,8 +64,10 @@ class Cards extends PureComponent {
         },
         {
           id: 4,
-          width: 1,
-          height: 1,
+          width: '1',
+          height: '1',
+          x: '2',
+          y: '2',
           component: <Pair
             amount={props.amount}
             toggle={props.toggle}
@@ -70,8 +77,10 @@ class Cards extends PureComponent {
         },
         {
           id: 5,
-          width: 1,
-          height: 1,
+          width: '1',
+          height: '1',
+          x: '3',
+          y: '2',
           component: <BuyOrders
             activeTab={props.toggle}
             orders={props.orders}
@@ -79,20 +88,26 @@ class Cards extends PureComponent {
         },
         {
           id: 6,
-          width: 1,
-          height: 1,
+          width: '2',
+          height: '1',
+          x: '1',
+          y: '3',
           component: <ActiveOrders />,
         },
         {
           id: 7,
-          width: 1,
-          height: 1,
+          width: '1',
+          height: '2',
+          x: '3',
+          y: '3',
           component: <TradingHistory />,
         },
         {
           id: 8,
-          width: 1,
-          height: 1,
+          width: '2',
+          height: '1',
+          x: '1',
+          y: '4',
           component: <SolidityDetail />,
         },
       ],
@@ -104,6 +119,8 @@ class Cards extends PureComponent {
     this.handleActiveTabChange = this.handleActiveTabChange.bind(this)
     this.handleOrdersChange = this.handleOrdersChange.bind(this)
     this.handleMatchChange = this.handleMatchChange.bind(this)
+    this.moveCard = this.moveCard.bind(this)
+    this.prevCard = this.prevCard.bind(this)
   }
 
 
@@ -145,20 +162,6 @@ class Cards extends PureComponent {
   componentWillUnmount() {
     const { onCloseSocket } = this.props
     onCloseSocket()
-  }
-
-  moveCard = (dragIndex, hoverIndex) => {
-    const { cards } = this.state
-    const dragCard = cards[dragIndex]
-
-    this.setState(
-      // eslint-disable-next-line react/no-access-state-in-setstate
-      update(this.state, {
-        cards: {
-          $splice: [[dragIndex, 1], [hoverIndex, 0, dragCard]],
-        },
-      }),
-    )
   }
 
   handleTabChange = (nextProps) => {
@@ -269,6 +272,71 @@ class Cards extends PureComponent {
     })
   }
 
+  moveCard = (dragItem, hoverItem) => {
+    const { cards } = this.state
+
+    if (dragItem.width === '1' && dragItem.height === '1') {
+      if (hoverItem.width === '1' && hoverItem.height === '1') {
+        cards[dragItem.index].x = hoverItem.x
+        cards[dragItem.index].y = hoverItem.y
+        cards[hoverItem.index].x = dragItem.x
+        cards[hoverItem.index].y = dragItem.y
+      }
+
+      this.setState({ cards })
+    }
+
+    if (dragItem.width === '2' && dragItem.height === '1') {
+      if (hoverItem.height === '1') {
+        if (hoverItem.width === '1') {
+          if (hoverItem.x === '1' || hoverItem.x === '2') {
+            if (hoverItem.y === dragItem.y) {
+              cards[dragItem.index].x = hoverItem.x
+              cards[hoverItem.index].x = (parseInt(dragItem.x, 10) + 1).toString()
+            } else if (hoverItem.y !== dragItem.y) {
+              cards[dragItem.index].x = hoverItem.x
+              cards[dragItem.index].y = hoverItem.y
+              cards[hoverItem.index].x = dragItem.x
+              cards[hoverItem.index].y = dragItem.y
+              cards[hoverItem.index + 1].x = (parseInt(dragItem.x, 10) + 1).toString()
+              cards[hoverItem.index + 1].y = dragItem.y
+            }
+          }
+
+          if (hoverItem.x === '3') {
+            if (hoverItem.y === dragItem.y) {
+              cards[dragItem.index].x = (parseInt(hoverItem.x, 10) - 1).toString()
+              cards[hoverItem.index].x = dragItem.x
+            } else {
+              const prev = this.prevCard(hoverItem)
+              cards[dragItem.index].x = (parseInt(hoverItem.x, 10) - 1).toString()
+              cards[dragItem.index].y = hoverItem.y
+              cards[hoverItem.index].x = (parseInt(dragItem.x, 10) + 1).toString()
+              cards[hoverItem.index].y = dragItem.y
+              cards[prev].x = dragItem.x
+              cards[prev].y = dragItem.y
+            }
+          }
+        }
+
+        if (hoverItem.width === '2') {
+          cards[dragItem.index].x = hoverItem.x
+          cards[dragItem.index].y = hoverItem.y
+          cards[hoverItem.index].x = dragItem.x
+          cards[hoverItem.index].y = dragItem.y
+        }
+      }
+
+      this.setState({ cards })
+    }
+  }
+
+  prevCard = (item) => {
+    const { cards } = this.state
+
+    return cards.findIndex(e => e.x === (parseInt(item.x, 10) - 1).toString() && e.y === item.y)
+  }
+
   render() {
     const { cards } = this.state
 
@@ -281,6 +349,10 @@ class Cards extends PureComponent {
             key={card.id}
             index={i}
             id={card.id}
+            width={card.width}
+            height={card.height}
+            x={card.x}
+            y={card.y}
             moveCard={this.moveCard}
           >
             {card.component}

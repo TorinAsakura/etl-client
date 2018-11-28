@@ -1,4 +1,18 @@
 pipeline:
+  publish-client-swt-docker:
+    image: plugins/docker
+    secrets: [ docker_username, docker_password ]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    repo: aleserche/er-client-swt
+    tags:
+      - latest
+      - ${DRONE_BRANCH}
+    dockerfile: ./Dockerfile-swt
+    when:
+      branch: ["master", "dev"]
+      event: [push]
+
   ssh:
     image: appleboy/drone-ssh
     host: stage.etelaranta.net
