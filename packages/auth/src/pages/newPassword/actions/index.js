@@ -38,8 +38,6 @@ export const verifyResetPassword = ({ verificationId, code }) => async (dispatch
     },
   })
 
-  console.log(data)
-
   if (data.verifyResetPassword.errors) {
     dispatch({
       type: actions.setErrors,

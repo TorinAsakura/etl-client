@@ -3,18 +3,14 @@ import { defineMessages } from 'react-intl'
 export default defineMessages({
   newPassword: {
     id: 'auth/restore/new_password',
-    defaultMessage: 'Set New Password',
+    defaultMessage: 'New password',
   },
-  password: {
-    id: 'auth/restore/password',
-    defaultMessage: 'Password',
+  confirmNewPassword: {
+    id: 'auth/restore/confirm_new_password',
+    defaultMessage: 'Confirm new password',
   },
-  confirmPassword: {
-    id: 'auth/restore/confirm_password',
-    defaultMessage: 'Confirm password',
-  },
-  confirm: {
-    id: 'auth/restore/confirm',
-    defaultMessage: 'Confirm',
+  save: {
+    id: 'auth/restore/save',
+    defaultMessage: 'Save',
   },
 })

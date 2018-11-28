@@ -46,6 +46,8 @@ const Restore = ({
             <Layout>
               <AuthButton
                 onClick={onRestore}
+                height='xlarge'
+                uppercase
               >
                 {intl.formatMessage(messages.send)}
               </AuthButton>

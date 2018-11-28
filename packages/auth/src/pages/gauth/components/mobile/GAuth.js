@@ -2,7 +2,7 @@ import React from 'react'
 import { injectIntl } from 'react-intl'
 import { Column, Layout, Row } from 'flex-layouts'
 import { Block } from '@er/ui/src/content'
-import { Input as AuthInput } from '@er/ui/src/input'
+import { Input } from '@er/ui/src/input'
 import { Text } from '@er/ui/src/text'
 import { AuthButton } from '@er/ui/src/button'
 import messages from '../../messages'
@@ -33,7 +33,7 @@ const GAuth = ({
             </Layout>
             <Layout basis='40px' />
             <Layout>
-              <AuthInput
+              <Input
                 placeholder={intl.formatMessage(messages.enterPassword)}
                 value={code}
                 onChange={onChangeCode}
@@ -45,6 +45,8 @@ const GAuth = ({
             <Layout>
               <AuthButton
                 onClick={onConfirmCode}
+                height='xlarge'
+                uppercase
               >
                 {intl.formatMessage(messages.submit)}
               </AuthButton>
