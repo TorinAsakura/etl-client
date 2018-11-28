@@ -2,12 +2,11 @@ import React from 'react'
 import { injectIntl } from 'react-intl'
 import { Column, Layout, Row } from 'flex-layouts'
 import { Block } from '@er/ui/src/content'
-import { Input as AuthInput } from '@er/ui/src/input'
+import { Input } from '@er/ui/src/input'
 import { Text } from '@er/ui/src/text'
 import { NavLink } from '@er/ui/src/link'
 import { AuthButton } from '@er/ui/src/button'
 import { Checkbox } from '@er/ui/src/checkbox'
-import Input from '@er/ui/src/input/Input'
 import messages from '../../messages'
 
 const Registration = ({
@@ -44,7 +43,7 @@ const Registration = ({
             </Layout>
             <Layout basis='40px' />
             <Layout justify='center'>
-              <AuthInput
+              <Input
                 placeholder={intl.formatMessage(messages.username)}
                 value={username}
                 onChange={onChangeUsername}
@@ -53,7 +52,7 @@ const Registration = ({
             </Layout>
             <Layout basis='16px' />
             <Layout justify='center'>
-              <AuthInput
+              <Input
                 placeholder={intl.formatMessage(messages.email)}
                 value={email}
                 onChange={onChangeEmail}
@@ -62,7 +61,7 @@ const Registration = ({
             </Layout>
             <Layout basis='16px' />
             <Layout justify='center'>
-              <AuthInput
+              <Input
                 type='password'
                 placeholder={intl.formatMessage(messages.password)}
                 value={password}
@@ -72,7 +71,7 @@ const Registration = ({
             </Layout>
             <Layout basis='16px' />
             <Layout justify='center'>
-              <AuthInput
+              <Input
                 type='password'
                 placeholder={intl.formatMessage(messages.confirmPassword)}
                 value={confirmPassword}
@@ -118,6 +117,8 @@ const Registration = ({
             <Layout>
               <AuthButton
                 onClick={onRegister}
+                height='xlarge'
+                uppercase
               >
                 {intl.formatMessage(messages.register)}
               </AuthButton>

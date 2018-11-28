@@ -45,6 +45,8 @@ const GAuth = ({
             <Layout>
               <AuthButton
                 onClick={onConfirmCode}
+                height='xlarge'
+                uppercase
               >
                 {intl.formatMessage(messages.submit)}
               </AuthButton>

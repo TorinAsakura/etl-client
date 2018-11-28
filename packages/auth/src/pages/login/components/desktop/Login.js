@@ -74,6 +74,8 @@ const Login = ({
             <Layout>
               <AuthButton
                 onClick={onLogin}
+                height='xlarge'
+                uppercase
               >
                 {intl.formatMessage(messages.login)}
               </AuthButton>

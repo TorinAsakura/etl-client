@@ -37,6 +37,8 @@ const Registration = ({
                 <Layout basis='327px'>
                   <AuthButton
                     onClick={() => history.goBack()}
+                    height='xlarge'
+                    uppercase
                   >
                     {intl.formatMessage(messages.done)}
                   </AuthButton>

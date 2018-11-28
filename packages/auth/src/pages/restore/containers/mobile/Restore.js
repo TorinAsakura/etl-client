@@ -1,6 +1,9 @@
 import { connect } from 'react-redux'
 import Restore from '../../components/mobile/Restore'
-import { change } from '../../actions'
+import {
+  change,
+  initReset,
+} from '../../actions'
 
 export default connect(
   state => ({
@@ -9,5 +12,6 @@ export default connect(
   }),
   dispatch => ({
     onChangeEmail: value => dispatch(change('email', value)),
+    onRestore: () => dispatch(initReset()),
   }),
 )(Restore)

@@ -118,6 +118,8 @@ const Registration = ({
               <AuthButton
                 onClick={onRegister}
                 disabled={!agree}
+                height='xlarge'
+                uppercase
               >
                 {intl.formatMessage(messages.register)}
               </AuthButton>
