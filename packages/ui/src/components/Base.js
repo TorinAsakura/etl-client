@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     zIndex: '10',
     boxSizing: 'border-box',
     flexDirection: 'column',
-    borderRadius: '4px',
+    borderRadius: '8px',
     backgroundColor: '#FFF',
     boxShadow: '0 2px 4px 0 rgba(0,0,0,0.06)',
     padding: '16px',
