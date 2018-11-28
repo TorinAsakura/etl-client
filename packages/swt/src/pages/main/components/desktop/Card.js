@@ -7,7 +7,9 @@ import {
 } from 'react-dnd'
 
 const styles = StyleSheet.create({
-  self: {},
+  self: {
+    display: 'flex',
+  },
   'height=1': {
     gridRow: 'auto',
   },
@@ -20,18 +22,25 @@ const styles = StyleSheet.create({
   'width=2': {
     gridColumnEnd: 'span 2',
   },
+  isDragging: {
+    opacity: '0',
+  },
 })
 
 const Card = ({
   children,
   connectDragSource,
   connectDropTarget,
+  isDragging,
   width,
   height,
+  x,
+  y,
 }) => connectDragSource(
   connectDropTarget(
     <div
-      className={styles({ width, height })}
+      className={styles({ width, height, isDragging })}
+      style={{ gridRowStart: y, gridColumnStart: x }}
     >
       {children}
     </div>,
@@ -46,17 +55,16 @@ export default DropTarget(
         return null
       }
 
-      const dragIndex = monitor.getItem().index
-      const hoverIndex = props.index
+      const dragItem = monitor.getItem()
+      const hoverItem = props
 
-      if (dragIndex === hoverIndex) {
+      if (dragItem.index === hoverItem.index) {
         return
       }
 
-      props.moveCard(dragIndex, hoverIndex)
+      props.moveCard(dragItem, hoverItem)
     },
-  }
-  ,
+  },
   connect => ({
     connectDropTarget: connect.dropTarget(),
   }),
@@ -66,12 +74,15 @@ export default DropTarget(
     {
       beginDrag(props) {
         return {
-          id: props.id,
           index: props.index,
+          id: props.id,
+          width: props.width,
+          height: props.height,
+          x: props.x,
+          y: props.y,
         }
       },
-    }
-    ,
+    },
     (connect, monitor) => ({
       connectDragSource: connect.dragSource(),
       isDragging: monitor.isDragging(),

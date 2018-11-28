@@ -1,5 +1,5 @@
 import React from 'react'
-import { Column, Layout, Row } from 'flex-layouts'
+import { Column, Layout } from 'flex-layouts'
 import { Block } from '@er/ui/src/content'
 import { Footer } from '@er/ui/src/footer'
 import Cards from './Cards'
@@ -7,7 +7,9 @@ import Cards from './Cards'
 const Main = ({
   match,
 }) => (
-  <Block>
+  <Block
+    color='gray1200'
+  >
     <Column align='center'>
       <Layout basis='32px' />
       <Layout>

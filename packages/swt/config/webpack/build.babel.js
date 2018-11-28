@@ -5,7 +5,6 @@ import jssNested from 'jss-nested'
 import jssCamelCase from 'jss-camel-case'
 import autoprefixer from 'autoprefixer'
 import htmlTemplate from 'html-webpack-template'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
@@ -13,6 +12,11 @@ import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 import CssResolvePlugin from 'elementum-tools/lib/webpack/css-resolve-plugin'
 
 export const mode = 'production'
+
+export const entry = [
+  '@babel/polyfill',
+  './src/index',
+]
 
 export const optimization = {
   splitChunks: {
@@ -35,14 +39,9 @@ export const optimization = {
   ],
 }
 
-export const entry = [
-  '@babel/polyfill',
-  './src/index',
-]
-
 export const output = {
   path: path.join(__dirname, '../../dist'),
-  filename: '[name].[hash].js',
+  filename: '[name].js',
   publicPath: '/',
 }
 
@@ -156,6 +155,7 @@ export const plugins = [
     ],
   }),
   new webpack.LoaderOptionsPlugin({
+    debug: true,
     options: {
       jssLoader: {
         plugins: [
@@ -169,7 +169,4 @@ export const plugins = [
   new webpack.ProvidePlugin({
     fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
   }),
-  new CopyWebpackPlugin([{
-    from: path.join(__dirname, '..', '..', 'assets'),
-  }]),
 ]
