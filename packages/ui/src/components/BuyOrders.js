@@ -1,16 +1,19 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import { Layout } from 'flex-layouts'
+import { Layout, Column } from 'flex-layouts'
 import { StyleSheet } from 'elementum'
-import { Table, Column } from 'react-virtualized'
-import Base from './Base'
+import {
+  Table,
+  Column as TableColumn,
+  AutoSizer,
+} from 'react-virtualized'
 import { Text } from '../text'
 import { Button } from '../button'
 import messages from './messages'
 
 const styles = StyleSheet.create({
   self: {
-    flex: '0 0 auto',
+    flex: '0 0 100%',
     display: 'flex',
     '& .ReactVirtualized__Table': {
     },
@@ -88,10 +91,9 @@ const BuyOrders = ({
   orders,
   intl,
   activeTab,
-  mobile,
 }) => (
-  <Base
-    mobile={mobile}
+  <Column
+    fill
   >
     <Layout>
       <Text
@@ -105,65 +107,70 @@ const BuyOrders = ({
     </Layout>
     <Layout basis='16px' />
     <div className={styles()}>
-      <Table
-        width={343}
-        headerHeight={33}
-        height={280}
-        rowHeight={32}
-        rowCount={orders[activeTab].length}
-        rowGetter={({ index }) => orders[activeTab][index]}
-        rowStyle={({ index }) => {
-          if (index === 1) {
-            return {
-              backgroundColor: '#FFE9F1',
-              margin: '1px 0',
-              height: '30px',
-            }
-          }
-          if (index === 0) {
-            return {
-              backgroundColor: '#FFF9D1',
-              margin: '1px 0',
-              height: '30px',
-            }
-          }
-          return {}
-        }}
-      >
-        <Column
-          label='Exchange'
-          headerRenderer={({ label }) => label}
-          dataKey='exchange'
-          width={85}
-        />
-        <Column
-          label='Action'
-          dataKey={activeTab}
-          width={86}
-          cellRenderer={({ rowData }) => (
-            <Button
-              height='small'
-              text='medium'
-              color={activeTab === 'sell' ? 'green700' : 'orange600'}
-              onClick={() => console.log(rowData)}
-            >
-              {activeTab}
-            </Button>
-          )}
-        />
-        <Column
-          label='BTC'
-          dataKey='price'
-          width={103}
-        />
-        <Column
-          label='Compare'
-          dataKey='amount'
-          width={57}
-        />
-      </Table>
+      <AutoSizer>
+        {({ width, height }) => (
+
+          <Table
+            width={width}
+            headerHeight={33}
+            height={height - 32}
+            rowHeight={32}
+            rowCount={orders[activeTab].length}
+            rowGetter={({ index }) => orders[activeTab][index]}
+            rowStyle={({ index }) => {
+              if (index === 1) {
+                return {
+                  backgroundColor: '#FFE9F1',
+                  margin: '1px 0',
+                  height: '30px',
+                }
+              }
+              if (index === 0) {
+                return {
+                  backgroundColor: '#FFF9D1',
+                  margin: '1px 0',
+                  height: '30px',
+                }
+              }
+              return {}
+            }}
+          >
+            <TableColumn
+              label='Exchange'
+              headerRenderer={({ label }) => label}
+              dataKey='exchange'
+              width={188}
+            />
+            <TableColumn
+              label='Action'
+              dataKey={activeTab}
+              width={190}
+              cellRenderer={({ rowData }) => (
+                <Button
+                  height='small'
+                  text='medium'
+                  color={activeTab === 'sell' ? 'green700' : 'orange600'}
+                  onClick={() => console.log(rowData)}
+                >
+                  {activeTab}
+                </Button>
+              )}
+            />
+            <TableColumn
+              label='BTC'
+              dataKey='price'
+              width={228}
+            />
+            <TableColumn
+              label='Compare'
+              dataKey='amount'
+              width={126}
+            />
+          </Table>
+        )}
+      </AutoSizer>
     </div>
-  </Base>
+  </Column>
 )
 
 export default injectIntl(BuyOrders)

@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     height: '24px',
+    width: '100%',
     alignItems: 'center',
     padding: '0',
     boxSizing: 'border-box',

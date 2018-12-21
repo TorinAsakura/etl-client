@@ -1,8 +1,7 @@
 import React from 'react'
 import TradingViewWidget from 'react-tradingview-widget'
 import { injectIntl } from 'react-intl'
-import { Layout } from 'flex-layouts'
-import Base from './Base'
+import { Layout, Column } from 'flex-layouts'
 import { Block } from '../content'
 import { Text } from '../text'
 import messages from './messages'
@@ -10,10 +9,9 @@ import messages from './messages'
 
 const Chart = ({
   intl,
-  mobile,
 }) => (
-  <Base
-    mobile={mobile}
+  <Column
+    fill
   >
     <Layout>
       <Text
@@ -36,7 +34,7 @@ const Chart = ({
         />
       </Block>
     </Layout>
-  </Base>
+  </Column>
 )
 
 export default injectIntl(Chart)

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     borderRadius: '4px',
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
-    zIndex: 6,
+    zIndex: 2,
     pointerEvents: 'none',
   },
   'align=left': {

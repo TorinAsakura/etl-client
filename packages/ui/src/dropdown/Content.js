@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     boxSizing: 'border-box',
     borderRadius: '4px',
+    padding: '0',
     '&::before': {
       content: '""',
       position: 'absolute',

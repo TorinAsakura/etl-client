@@ -1,21 +1,23 @@
 import Balances from './Balances'
-import Base from './Base'
+import ActiveOrders from './ActiveOrders'
+import BuyOrders from './BuyOrders'
+import Card from './Card'
 import Chart from './Chart'
 import ChoosePair from './ChoosePair'
+import Edit from './Edit'
 import Pair from './Pair'
-import BuyOrders from './BuyOrders'
-import ActiveOrders from './ActiveOrders'
-import TradingHistory from './TradingHistory'
 import SolidityDetail from './SolidityDetails'
+import TradingHistory from './TradingHistory'
 
 export {
+  ActiveOrders,
   Balances,
-  Base,
+  BuyOrders,
+  Card,
   Chart,
   ChoosePair,
+  Edit,
   Pair,
-  BuyOrders,
-  ActiveOrders,
-  TradingHistory,
   SolidityDetail,
+  TradingHistory,
 }

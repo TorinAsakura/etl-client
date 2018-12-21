@@ -1,8 +1,7 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import { Layout, Row } from 'flex-layouts'
+import { Layout, Row, Column } from 'flex-layouts'
 import { StyleSheet } from 'elementum'
-import Base from './Base'
 import { Text } from '../text'
 import { SwitcherToggle, SwitcherToggleContainer } from '../switcher'
 import { Block } from '../content'
@@ -78,10 +77,9 @@ const ChoosePair = ({
   onChangeToggle,
   onChangeAmount,
   intl,
-  mobile,
 }) => (
-  <Base
-    mobile={mobile}
+  <Column
+    fill
   >
     <div
       className={styles({
@@ -205,7 +203,7 @@ const ChoosePair = ({
         <Layout basis='36px' />
       </Row>
     </Layout>
-  </Base>
+  </Column>
 )
 
 export default injectIntl(ChoosePair)

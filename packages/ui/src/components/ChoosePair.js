@@ -1,9 +1,12 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import { Layout } from 'flex-layouts'
+import { Layout, Column } from 'flex-layouts'
 import { StyleSheet } from 'elementum'
-import { Table, Column } from 'react-virtualized'
-import Base from './Base'
+import {
+  Table,
+  Column as TableColumn,
+  AutoSizer,
+} from 'react-virtualized'
 import { Text } from '../text'
 import { Switcher, SwitcherTab } from '../switcher'
 import messages from './messages'
@@ -97,7 +100,7 @@ const mock = [
 
 const styles = StyleSheet.create({
   self: {
-    flex: '0 0 auto',
+    flex: '0 0 100%',
     display: 'flex',
     '& .ReactVirtualized__Table': {
     },
@@ -175,13 +178,12 @@ const ChoosePair = ({
   tab,
   onChangeTab,
   intl,
-  mobile,
 }) => {
   const data = list.filter(i => i.pair === tab)
 
   return (
-    <Base
-      mobile={mobile}
+    <Column
+      fill
     >
       <Layout>
         <Text
@@ -194,58 +196,64 @@ const ChoosePair = ({
         </Text>
       </Layout>
       <Layout basis='16px' />
-      <Switcher
-        star
-      >
-        <SwitcherTab
-          to={match.path}
-          exact
-          onClick={() => onChangeTab('BTC')}
+      <Layout basis='24px'>
+        <Switcher
+          star
         >
+          <SwitcherTab
+            to={match.path}
+            exact
+            onClick={() => onChangeTab('BTC')}
+          >
         BTC
-        </SwitcherTab>
-        <SwitcherTab
-          to={`${match.path}eth`}
-          onClick={() => onChangeTab('ETH')}
-        >
+          </SwitcherTab>
+          <SwitcherTab
+            to={`${match.path}eth`}
+            onClick={() => onChangeTab('ETH')}
+          >
         ETH
-        </SwitcherTab>
-      </Switcher>
+          </SwitcherTab>
+        </Switcher>
+      </Layout>
       <Layout basis='16px' />
       <div className={styles()}>
-        <Table
-          width={343}
-          headerHeight={33}
-          height={240}
-          rowHeight={33}
-          rowCount={data.length}
-          rowGetter={({ index }) => data[index]}
-        >
-          <Column
-            label='Pair'
-            headerRenderer={({ label }) => label}
-            dataKey='pair'
-            width={76}
-            style={{ color: '#8A4DD0' }}
-          />
-          <Column
-            label='Buy'
-            dataKey='buy'
-            width={105}
-          />
-          <Column
-            label='Sell'
-            dataKey='sell'
-            width={105}
-          />
-          <Column
-            label='Changes'
-            dataKey='changes'
-            width={55}
-          />
-        </Table>
+        <AutoSizer>
+          {({ width, height }) => (
+            <Table
+              width={width}
+              headerHeight={33}
+              height={height - 72}
+              rowHeight={33}
+              rowCount={data.length}
+              rowGetter={({ index }) => data[index]}
+            >
+              <TableColumn
+                label='Pair'
+                headerRenderer={({ label }) => label}
+                dataKey='pair'
+                width={168}
+                style={{ color: '#8A4DD0' }}
+              />
+              <TableColumn
+                label='Buy'
+                dataKey='buy'
+                width={232}
+              />
+              <TableColumn
+                label='Sell'
+                dataKey='sell'
+                width={232}
+              />
+              <TableColumn
+                label='Changes'
+                dataKey='changes'
+                width={121}
+              />
+            </Table>
+          )}
+        </AutoSizer>
       </div>
-    </Base>
+    </Column>
   )
 }
 

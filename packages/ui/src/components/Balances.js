@@ -1,9 +1,12 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import { Layout, Row } from 'flex-layouts'
+import { Layout, Row, Column } from 'flex-layouts'
 import { StyleSheet } from 'elementum'
-import { Table, Column } from 'react-virtualized'
-import Base from './Base'
+import {
+  Table,
+  Column as TableColumn,
+  AutoSizer,
+} from 'react-virtualized'
 import { Block } from '../content'
 import { Text } from '../text'
 import { Button } from '../button'
@@ -65,7 +68,7 @@ const mock = [
 
 const styles = StyleSheet.create({
   self: {
-    flex: '0 0 auto',
+    flex: '0 0 100%',
     display: 'flex',
     '& .ReactVirtualized__Table': {
     },
@@ -100,7 +103,6 @@ const styles = StyleSheet.create({
       whiteSpace: 'nowrap',
     },
     '& .ReactVirtualized__Table__headerColumn, .ReactVirtualized__Table__rowColumn': {
-      // marginRight: '10px',
       minWidth: '0px',
       '&:first-of-type': {
         marginLeft: '10px',
@@ -127,10 +129,9 @@ const styles = StyleSheet.create({
 const Balances = ({
   list = mock,
   intl,
-  mobile,
 }) => (
-  <Base
-    mobile={mobile}
+  <Column
+    fill
   >
     <Layout>
       <Row align='center'>
@@ -171,54 +172,58 @@ const Balances = ({
     </Layout>
     <Layout basis='5px' />
     <div className={styles()}>
-      <Table
-        width={343}
-        height={282}
-        rowHeight={33}
-        rowCount={list.length}
-        rowGetter={({ index }) => list[index]}
-      >
-        <Column
-          dataKey='pair'
-          width={110}
-          style={{ color: '#A8A8A8' }}
-        />
-        <Column
-          dataKey='amount'
-          width={190}
-        />
-        <Column
-          dataKey=''
-          width={16}
-          cellRenderer={({ rowData }) => (
-            <Button
-              size='small'
-              radius='round'
-              color='gray700'
-              onClick={() => console.log(rowData.id)}
-            >
-              <WithdrawalMIcon />
-            </Button>
-          )}
-          style={{ marginRight: '4px' }}
-        />
-        <Column
-          dataKey=''
-          width={16}
-          cellRenderer={({ rowData }) => (
-            <Button
-              size='small'
-              radius='round'
-              color='gray700'
-              onClick={() => console.log(rowData.id)}
-            >
-              <DepositMIcon />
-            </Button>
-          )}
-        />
-      </Table>
+      <AutoSizer>
+        {({ width, height }) => (
+          <Table
+            width={width}
+            height={height - 32}
+            rowHeight={33}
+            rowCount={list.length}
+            rowGetter={({ index }) => list[index]}
+          >
+            <TableColumn
+              dataKey='pair'
+              width={250}
+              style={{ color: '#A8A8A8' }}
+            />
+            <TableColumn
+              dataKey='amount'
+              width={430}
+            />
+            <TableColumn
+              dataKey=''
+              width={36}
+              cellRenderer={({ rowData }) => (
+                <Button
+                  size='small'
+                  radius='round'
+                  color='gray700'
+                  onClick={() => console.log(rowData.id)}
+                >
+                  <WithdrawalMIcon />
+                </Button>
+              )}
+              style={{ marginRight: '4px' }}
+            />
+            <TableColumn
+              dataKey=''
+              width={36}
+              cellRenderer={({ rowData }) => (
+                <Button
+                  size='small'
+                  radius='round'
+                  color='gray700'
+                  onClick={() => console.log(rowData.id)}
+                >
+                  <DepositMIcon />
+                </Button>
+              )}
+            />
+          </Table>
+        )}
+      </AutoSizer>
     </div>
-  </Base>
+  </Column>
 )
 
 export default injectIntl(Balances)

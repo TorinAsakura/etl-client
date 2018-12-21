@@ -1,9 +1,8 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import { Layout } from 'flex-layouts'
+import { Layout, Column } from 'flex-layouts'
 import { StyleSheet } from 'elementum'
-import { Table, Column, AutoSizer } from 'react-virtualized'
-import Base from './Base'
+import { Table, Column as TableColumn, AutoSizer } from 'react-virtualized'
 import { Text } from '../text'
 import messages from './messages'
 
@@ -217,10 +216,9 @@ const styles = StyleSheet.create({
 const ChoosePair = ({
   list = mock,
   intl,
-  mobile,
 }) => (
-  <Base
-    mobile={mobile}
+  <Column
+    fill
   >
     <Layout>
       <Text
@@ -244,39 +242,39 @@ const ChoosePair = ({
             rowCount={list.length}
             rowGetter={({ index }) => list[index]}
           >
-            <Column
+            <TableColumn
               label='Date'
               headerRenderer={({ label }) => label}
               dataKey='date'
               width={118}
             />
-            <Column
+            <TableColumn
               label='Pair'
               dataKey='pair'
               width={111}
             />
-            <Column
+            <TableColumn
               label='Action'
               dataKey='action'
               width={67}
               style={{ color: '#FF8500' }}
             />
-            <Column
+            <TableColumn
               label='Price'
               dataKey='price'
               width={112}
             />
-            <Column
+            <TableColumn
               label='Amount'
               dataKey='amount'
               width={108}
             />
-            <Column
+            <TableColumn
               label='Partly'
               dataKey='partly'
               width={113}
             />
-            <Column
+            <TableColumn
               label='Total'
               dataKey='total'
               width={104}
@@ -285,7 +283,7 @@ const ChoosePair = ({
         )}
       </AutoSizer>
     </div>
-  </Base>
+  </Column>
 )
 
 export default injectIntl(ChoosePair)

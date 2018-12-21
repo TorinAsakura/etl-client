@@ -106,7 +106,6 @@ class Cards extends PureComponent {
     this.handleMatchChange = this.handleMatchChange.bind(this)
   }
 
-
   componentDidMount() {
     const { onOpenSocket } = this.props
     onOpenSocket()

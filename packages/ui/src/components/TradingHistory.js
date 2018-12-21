@@ -1,9 +1,8 @@
 import React from 'react'
 import { injectIntl } from 'react-intl'
-import { Layout } from 'flex-layouts'
+import { Layout, Column } from 'flex-layouts'
 import { StyleSheet } from 'elementum'
-import { Table, Column, AutoSizer } from 'react-virtualized'
-import Base from './Base'
+import { Table, Column as TableColumn, AutoSizer } from 'react-virtualized'
 import { Text } from '../text'
 import messages from './messages'
 
@@ -248,11 +247,9 @@ const styles = StyleSheet.create({
 const ChoosePair = ({
   list = mock,
   intl,
-  mobile,
 }) => (
-  <Base
-    size='1x2'
-    mobile={mobile}
+  <Column
+    fill
   >
     <Layout>
       <Text
@@ -276,33 +273,33 @@ const ChoosePair = ({
             rowCount={list.length}
             rowGetter={({ index }) => list[index]}
           >
-            <Column
+            <TableColumn
               label='Date'
               headerRenderer={({ label }) => label}
               dataKey='date'
-              width={123}
+              width={272}
             />
-            <Column
+            <TableColumn
               label='Action'
               dataKey='action'
-              width={64}
+              width={142}
               style={{ color: '#FF8500' }}
             />
-            <Column
+            <TableColumn
               label='Price'
               dataKey='price'
-              width={86}
+              width={190}
             />
-            <Column
+            <TableColumn
               label='Amount'
               dataKey='amount'
-              width={70}
+              width={155}
             />
           </Table>
         )}
       </AutoSizer>
     </div>
-  </Base>
+  </Column>
 )
 
 export default injectIntl(ChoosePair)

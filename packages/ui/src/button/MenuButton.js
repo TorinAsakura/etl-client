@@ -14,14 +14,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: '50%',
+    cursor: 'pointer',
+    border: '1px solid #E0F2FF',
   },
   inactive: {
     backgroundColor: '#E0F2FF',
-    border: 'none',
   },
   active: {
     backgroundColor: '#FFF',
-    border: '1px solid #E0F2FF',
   },
 })
 

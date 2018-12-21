@@ -1,4 +1,6 @@
 - Компоненты
-  - [Логотип](src/logo/Readme.md)
+  - [Батн](src/button/Readme.md)
+  - [Чекбокс](src/checkbox/Readme.md)
+  - [Дропдаун](src/dropdown/Readme.md)
   - [Инпат](src/input/Readme.md)
-  - [Линк](src/link/Readme.md)
+  - [Селект](src/select/Readme.md)
