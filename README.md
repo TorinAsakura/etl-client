@@ -1,6 +1,6 @@
 # Install Dep's
 `
-yarn
+docker-compose run yarn
 `
 
 # Run Instance
